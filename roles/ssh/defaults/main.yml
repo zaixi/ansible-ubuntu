@@ -1,7 +1,7 @@
 ---
 
 ssh:
-  start: false
-  service_enabled: no
+  start: ture
+  service_enabled: ture
   password_auth: false
   root_login: false

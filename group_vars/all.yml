@@ -2,8 +2,8 @@
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 aptcachetime: 3600
-locale: "fr_FR.UTF-8"
-timezone: "Europe/Paris"
+locale: "zh_CN"
+timezone: "Asia/Shanghai"
 chromium:
   set_default: true
   policy: false
@@ -26,11 +26,6 @@ php_phar_tools:
   codeception: true
   cssprites: true
   wpcli: true
-ssh:
-  start: true
-  service_enabled: true
-  password_auth: false
-  root_login: false
 vhosts:
   - template: standard
     vhost: "default70.dev"

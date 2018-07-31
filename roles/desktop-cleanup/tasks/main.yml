@@ -9,6 +9,7 @@
 - name: Remove Amazon and others Unity shits
   apt: pkg={{ item }} purge=yes state=absent
   with_items:
+    - unity-webapps-common
     - unity-lens-shopping
     - unity-scope-video-remote
     - unity-scope-musicstores
@@ -22,6 +23,23 @@
     - unity-scope-launchpad
     - unity-scope-onlinemusic
     - unity-scope-yahoostock
+
+- name: Remove games
+  apt: pkg={{ item }} purge=yes state=absent
+  with_items:
+    - gnome-sudoku
+    - ace-of-penguins
+    - gnomine
+    - gnome-mines
+    - gbrainy
+    - gnome-mahjongg
+    - aisleriot
+
+- name: Ubuntu | Uninstall libre office
+  apt: pkg={{item}} purge=yes state=absent
+  with_items:
+     - libreoffice-core
+     - openoffice
 
 - name: Remove shitty Amazon shortcut
   file: path=/usr/share/applications/ubuntu-amazon-default.desktop force=yes state=absent

@@ -3,26 +3,26 @@
 - name: Install common desktop packages
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
   with_items:
-    - bleachbit
-    - easytag # audio files metadata management
-    - byzanz # screen recording
-    - geany
-    - libnotify-bin
-    - inotify-tools
-    - meld # Diff / merge tool
-    - cifs-utils
-    - mpv
-    - pinta # light paint.net equivalent
-    - rhythmbox
-    - rxvt-unicode-256color
-    - sox # to play sounds
-    - tilda # lighter than guake
-    - ubuntu-restricted-extras # MP3, Microsoft fonts, Flash plugin, LAME and DVD playback
-    - unetbootin # create bootable USB drives
-    - vlc
-    - wmctrl # to control windows
-    - xclip # to manipulate the clipboard
-    - xdotool # to control windows
+    - bleachbit      # 系统垃圾清理
+    - easytag        # 音频文件元数据管理
+    - byzanz         # 屏幕录制(gif)
+    - geany          # 轻量级IDE
+    - libnotify-bin  # 桌面通知
+    - inotify-tools  # 桌面通知
+    - meld           # Diff / merge tool
+    - cifs-utils     # 共享文件夹
+    - mpv            # 开源播放器
+    - pinta          # 图片编辑器
+    - rhythmbox      # 音乐播放器
+    - sox            # 音频瑞士军刀
+    - tilda          # 下拉式终端
+    - ubuntu-restricted-extras #MP3,Microsoft字体,Flash插件,LAME和DVD播放
+    - unetbootin     # 创建U盘启动盘
+    - vlc            # 多媒体播放器
+    - wmctrl         # 窗口管理
+    - xclip          # 命令行操作剪贴板
+    - xdotool        # linux按键精灵
+    - gparted        # 磁盘管理工具
 
 - name: Install common desktop packages if Ubuntu 16.04
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

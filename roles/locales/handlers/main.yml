@@ -3,5 +3,8 @@
 - name: Generate locales
   command: locale-gen
 
+- name: Set locales
+  template: src=locale.j2 dest=/etc/default/locale
+
 - name: Update TimeZone data
   command: dpkg-reconfigure --frontend noninteractive tzdata

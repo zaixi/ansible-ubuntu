@@ -45,7 +45,7 @@
     - nfs-common
     - nmap
     - openssl
-    - p7zip
+    - p7zip-full
     - pv
     - pwgen
     - ranger
@@ -64,6 +64,12 @@
     - wget
     - whois
     - zip
+    - bash-completion
+    - ncdu
+    - screen
+    - unrar
+    - unzip
+    - tcpdump
 
 - name: Upgrade installed packages
   apt: upgrade=yes

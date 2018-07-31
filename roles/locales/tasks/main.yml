@@ -1,20 +1,18 @@
 ---
 
-- name: Configure locales
+- name: Configure locales #添加语言
   lineinfile: dest=/var/lib/locales/supported.d/local regexp="{{ item }}" line="{{ item }}" create="yes"
   notify:
     - Generate locales
+    - Set locales
   with_items:
     - "en_US.UTF-8 UTF-8"
-    - "{{ locale }} UTF-8"
+    - "{{ locale }}.UTF8 UTF-8"
 
-- name: Set localtime (/etc/localtime)
+- name: Set localtime (/etc/localtime) #在目标机上复制文件
   copy: remote_src=yes src=/usr/share/zoneinfo/{{ timezone }} dest=/etc/localtime
 
-- name: Set timezone (/etc/timezone)
+- name: Set timezone (/etc/timezone) # 将文档内容设定到timezone的值
   copy: content="{{ timezone }}\n" dest=/etc/timezone
   notify:
     - Update TimeZone data
-
-- name: Install ntp package
-  action: apt pkg=ntp state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

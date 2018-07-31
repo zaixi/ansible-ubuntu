@@ -7,7 +7,7 @@
   user: name=root shell=/bin/zsh
 
 - name: Copy default ZSH config for user root
-  copy: src="zshrc" dest="/root/.zshrc" owner="root" group="root" force=yes
+  copy: src="zshrc" dest="/root/.zshrc" owner="root" group="root" force=no
 
 - name: "Make ZSH default shell for user {{ ansible_env.USER }}"
   user: name={{ ansible_env.USER }} shell=/bin/zsh

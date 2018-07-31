@@ -1,7 +1,7 @@
 ---
 
-- name: Configure the Remmina PPA
-  apt_repository: repo="ppa:remmina-ppa-team/remmina-next" state=present
+#- name: Configure the Remmina PPA
+  #apt_repository: repo="ppa:remmina-ppa-team/remmina-next" state=present
 
 - name: Install Remmina
   apt: pkg="{{ item }}" state=present

@@ -11,7 +11,7 @@
   with_items:
     - gsettings set org.gnome.desktop.wm.keybindings switch-input-source "[]"
     - gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "[]"
-    - gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot '<Shift>Print'
+    - gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot '<Ctrl><Shift>A'
     - gsettings set org.gnome.settings-daemon.plugins.media-keys area-screenshot-clip '<Ctrl><Shift>Print'
     - gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot 'Print'
     - gsettings set org.gnome.settings-daemon.plugins.media-keys screenshot-clip '<Ctrl>Print'
@@ -35,7 +35,7 @@
     - gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Control><Alt>Up']"
     - gsettings set org.gnome.desktop.wm.keybindings show-desktop "['<Super>d']"
     - gsettings set org.gnome.desktop.wm.keybindings panel-main-menu "['<Super>s']"
-    - gsettings set org.gnome.settings-daemon.plugins.media-keys terminal '<Control><Alt>r'
+    - gsettings set org.gnome.settings-daemon.plugins.media-keys terminal '<Control><Alt>t'
     - gsettings set org.gnome.settings-daemon.plugins.media-keys screensaver '<Super>l'
     - gsettings set org.gnome.settings-daemon.plugins.media-keys home '<Super>e'
     - gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/']"
@@ -110,8 +110,8 @@
     - gsettings set org.gnome.calculator accuracy 8
     - gsettings set org.gnome.calculator button-mode 'advanced'
     - gsettings set org.gnome.calculator number-format 'fixed'
-    - gsettings set org.gnome.calculator source-units 'EUR'
-    - gsettings set org.gnome.calculator target-units 'USD'
+    - gsettings set org.gnome.calculator source-units 'USD'
+    - gsettings set org.gnome.calculator target-units 'CNY'
 
 - name: Set Terminal preferences
   command: "{{ item }}"
@@ -121,20 +121,10 @@
     - gsettings set org.gnome.Terminal.Legacy.Settings encodings "['UTF-8']"
     - gsettings set org.gnome.Terminal.Legacy.Settings shortcuts-enabled true
     - gsettings set org.gnome.Terminal.Legacy.Settings tab-policy 'automatic'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-window '<Ctrl>n'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-tab '<Ctrl>t'
+    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-window '<Ctrl><Shift>n'
+    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-tab '<Ctrl><Shift>t'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ close-tab '<Ctrl><Shift>w'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ close-window '<Ctrl>q'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-1 '<Primary>ampersand'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-2 '<Primary>eacute'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-3 '<Primary>quotedbl'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-4 '<Primary>apostrophe'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-5 '<Primary>parenleft'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-6 '<Primary>minus'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-7 '<Primary>egrave'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-8 '<Primary>underscore'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-9 '<Primary>ccedilla'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ switch-to-tab-10 '<Primary>agrave'
+    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ close-window '<Ctrl><Shift>q'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Control>Page_Down'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Control>Page_Up'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ copy '<Ctrl><Shift>c'
@@ -151,8 +141,8 @@
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ zoom-out '<Ctrl>minus'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ detach-tab 'disabled'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ help 'disabled'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ move-tab-left 'disabled'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ move-tab-right 'disabled'
+    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ move-tab-left '<Ctrl><Shift>Page_Up'
+    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ move-tab-right '<Ctrl><Shift>Page_Down'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-profile 'disabled'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ save-contents 'disabled'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ toggle-menubar 'disabled'
