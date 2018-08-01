@@ -1,6 +1,6 @@
 ---
 
-- name: Check MailHog version
+- name: Check MailHog version(基于Web和API的SMTP测试,类似MailCatcher)
   command: "mailhog --version"
   register: mailhog_version
   ignore_errors: true

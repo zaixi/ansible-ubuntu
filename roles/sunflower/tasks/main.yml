@@ -1,6 +1,6 @@
 ---
 
-- name: Check if SunFlower is installed
+- name: Check if SunFlower is installed(双面板文件管理器)
   command: dpkg-query -W sunflower
   register: sunflower_check_deb
   failed_when: sunflower_check_deb.rc > 1

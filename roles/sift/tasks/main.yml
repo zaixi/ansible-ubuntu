@@ -1,6 +1,6 @@
 ---
 
-- name: Check sift version
+- name: Check sift version(类似grep搜索工具)
   command: "sift --version"
   register: sift_version
   ignore_errors: true

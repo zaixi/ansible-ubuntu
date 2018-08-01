@@ -1,6 +1,6 @@
 ---
 
-- name: Install Beanstalkd
+- name: Install Beanstalkd(轻量级的内存型队列)
   apt: pkg=beanstalkd state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
 
 - name: "Ensure Beanstalkd is {{ beanstalkd.start | ternary('started','stopped') }}"

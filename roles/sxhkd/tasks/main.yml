@@ -1,6 +1,6 @@
 ---
 
-- name: Clone sxhkd repository
+- name: Clone sxhkd repository(x热键守护进程 )
   git: repo=https://github.com/baskerville/sxhkd.git dest="{{ ansible_env.HOME }}/.cache/install/sxhkd" update=yes accept_hostkey=yes
   become: true
   become_user: "{{ ansible_env.USER }}"

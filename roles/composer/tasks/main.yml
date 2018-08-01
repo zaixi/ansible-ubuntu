@@ -1,6 +1,6 @@
 ---
 
-- name: Check Composer version
+- name: Check Composer version(php依赖管理器)
   command: "composer --version"
   register: composer_version
   ignore_errors: true

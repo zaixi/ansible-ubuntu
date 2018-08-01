@@ -1,6 +1,6 @@
 ---
 
-- name: Add LibreOffice repository
+- name: Add LibreOffice repository(开源office)
   apt_repository: repo="ppa:libreoffice/libreoffice-5-1" state=present
 
 - name: Install LibreOffice

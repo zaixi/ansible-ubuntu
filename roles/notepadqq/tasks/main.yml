@@ -1,6 +1,6 @@
 ---
 
-- name: Add Notepadqq repository
+- name: Add Notepadqq repository(notepadqq编辑器)
   apt_repository: repo="ppa:notepadqq-team/notepadqq" state=present
 
 - name: Install Notepadqq text editor

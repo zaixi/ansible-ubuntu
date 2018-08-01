@@ -1,6 +1,6 @@
 ---
 
-- name: Check if Remarkable is installed
+- name: Check if Remarkable is installed(markdown编辑器)
   command: dpkg-query -W remarkable
   register: remarkable_check_deb
   failed_when: remarkable_check_deb.rc > 1

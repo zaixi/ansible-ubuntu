@@ -1,6 +1,6 @@
 ---
 
-- name: Check if hubiC is installed
+- name: Check if hubiC is installed(欧洲云盘)
   command: dpkg-query -W hubic
   register: hubic_check_deb
   failed_when: hubic_check_deb.rc > 1

@@ -1,6 +1,6 @@
 ---
 
-- name: Check if CopyQ is installed
+- name: Check if CopyQ is installed(高级剪贴板)
   command: dpkg-query -W copyq
   register: copyq_check_deb
   failed_when: copyq_check_deb.rc > 1

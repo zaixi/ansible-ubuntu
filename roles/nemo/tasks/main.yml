@@ -1,6 +1,6 @@
 ---
 
-- name: Configure the Nemo PPA
+- name: Configure the Nemo PPA(Ubuntu 12的文件管理器)
   apt_repository: repo="ppa:webupd8team/nemo" state=present
 
 - name: Install Nemo

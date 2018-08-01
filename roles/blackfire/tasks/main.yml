@@ -1,6 +1,5 @@
 ---
-
-- name: Add Blackfire.io apt key
+- name: Add Blackfire.io apt key(分析php应用程性能)
   apt_key: url=https://packagecloud.io/gpg.key state=present
 
 - name: Add Blackfire.io repository

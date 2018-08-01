@@ -1,6 +1,6 @@
 ---
 
-- name: Add MaIm repository
+- name: Add MaIm repository(maim命令截图)
   apt_repository: repo="ppa:nilarimogard/webupd8" state=present
 
 - name: Install MaIm

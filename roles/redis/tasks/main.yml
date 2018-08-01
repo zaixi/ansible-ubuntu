@@ -1,6 +1,6 @@
 ---
 
-- name: Add Redis repository
+- name: Add Redis repository(key-value存储NOSQL系统)
   apt_repository: repo='ppa:chris-lea/redis-server' state=present update_cache=yes
 
 - name: Install Redis

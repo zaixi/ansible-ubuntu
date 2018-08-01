@@ -1,6 +1,6 @@
 ---
 
-- name: Clone bspwm repository
+- name: Clone bspwm repository(基于二进制空间分区的平铺窗口管理器)
   git: repo=https://github.com/baskerville/bspwm.git dest="{{ ansible_env.HOME }}/.cache/install/bspwm" update=yes accept_hostkey=yes
   become: true
   become_user: "{{ ansible_env.USER }}"

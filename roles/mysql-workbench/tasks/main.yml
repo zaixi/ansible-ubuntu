@@ -1,6 +1,6 @@
 ---
 
-- name: Check if MySQL WorkBench is installed
+- name: Check if MySQL WorkBench is installed(mysql图形界面)
   command: dpkg-query -W mysql-workbench
   register: mysql_workbench_check_deb
   failed_when: mysql_workbench_check_deb.rc > 1

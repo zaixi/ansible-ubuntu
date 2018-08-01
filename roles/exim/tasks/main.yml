@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure Exim is installed
+- name: Ensure Exim is installed(邮件传输代理)
   apt: name=exim4 state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
 
 - name: Configure Exim (1/2)

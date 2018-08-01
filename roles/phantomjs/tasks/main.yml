@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure PhantomJS native package is absent
+- name: Ensure PhantomJS native package is absent(无界面浏览器)
   apt: name=phantomjs state=absent purge=yes
 
 - name: Install PhantomJS dependencies

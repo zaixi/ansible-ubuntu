@@ -1,6 +1,6 @@
 ---
 
-- name: Set npm global packages path
+- name: Set npm global packages path(浏览器同步测试工具)
   command: npm config set prefix "{{ ansible_env.HOME }}/.npm-packages"
   changed_when: false
 

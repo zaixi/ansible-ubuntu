@@ -1,4 +1,4 @@
 ---
 
-- name: Install Skype
+- name: Install Skype(skype聊天)
   apt: pkg=skype state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

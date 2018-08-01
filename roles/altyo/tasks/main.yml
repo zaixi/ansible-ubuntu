@@ -1,6 +1,6 @@
 ---
 
-- name: Add AltYo repository
+- name: Add AltYo repository(下拉终端)
   apt_repository: repo="ppa:linvinus/altyo" state=present
 
 - name: Install AltYo

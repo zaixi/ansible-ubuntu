@@ -1,6 +1,6 @@
 ---
 
-- name: Check if GDrive is installed
+- name: Check if GDrive is installed(谷歌云盘)
   command: dpkg-query -W gdrive
   register: gdrive_check_deb
   failed_when: gdrive_check_deb.rc > 1

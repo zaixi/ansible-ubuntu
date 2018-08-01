@@ -1,6 +1,6 @@
 ---
 
-- name: Clone xcb-util-xrm repository
+- name: Clone xcb-util-xrm repository(窗口切换器)
   git: repo=https://github.com/Airblader/xcb-util-xrm.git dest="{{ ansible_env.HOME }}/.cache/install/xcb-util-xrm" update=yes accept_hostkey=yes
 
 - name: Clone rofi repository

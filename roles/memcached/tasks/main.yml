@@ -1,6 +1,6 @@
 ---
 
-- name: Install Memcached
+- name: Install Memcached(分布式高速内存对象缓存系统)
   apt: pkg=memcached state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
 
 - name: "Ensure Memcached is {{ memcached.start | ternary('started','stopped') }}"

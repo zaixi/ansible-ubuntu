@@ -1,6 +1,6 @@
 ---
 
-- name: Configure the Claws Mail PPA
+- name: Configure the Claws Mail PPA(邮件客户端)
   apt_repository: repo="ppa:claws-mail/ppa" state=present
 
 - name: Install Claws Mail

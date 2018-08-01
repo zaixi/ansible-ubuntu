@@ -1,6 +1,6 @@
 ---
 
-- name: Add sublime repository
+- name: Add sublime repository(编辑器)
   apt_repository: repo="ppa:webupd8team/sublime-text-3" state=present
 
 - name: Install latest sublime package

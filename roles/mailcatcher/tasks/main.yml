@@ -1,6 +1,6 @@
 ---
 
-- name: Install Mailcatcher packages dependencies
+- name: Install Mailcatcher packages dependencies(简单SMTP服务器)
   apt: name="{{ item }}" state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
   with_items:
     - libsqlite3-dev

@@ -1,0 +1,17 @@
+---
+
+- name: 系统更新
+  apt:
+    update_cache: true
+    upgrade: true
+    autoremove: true
+
+- name: 删除已卸载软件的配置
+  shell:
+    dpkg -l |grep ^rc|awk '{print $2}' |sudo xargs dpkg -P
+  register: result
+
+- name: Show debug info
+  debug:
+    var=result
+

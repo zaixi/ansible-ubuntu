@@ -1,6 +1,6 @@
 ---
 
-- name: Check if TeamViewer is installed
+- name: Check if TeamViewer is installed(远程软件)
   command: dpkg-query -W teamviewer
   register: teamviewer_check_deb
   failed_when: teamviewer_check_deb.rc > 1

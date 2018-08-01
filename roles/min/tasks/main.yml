@@ -1,6 +1,6 @@
 ---
 
-- name: Check if Min is installed
+- name: Check if Min is installed(浏览器)
   command: dpkg-query -W min
   register: min_check_deb
   failed_when: min_check_deb.rc > 1

@@ -1,6 +1,6 @@
 ---
 
-- name: Add Elasticsearch apt key
+- name: Add Elasticsearch apt key(高度可伸缩的开源全文搜索和分析引擎)
   apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
 
 - name: Add Elasticsearch repository

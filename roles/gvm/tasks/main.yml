@@ -1,6 +1,6 @@
 ---
 
-- name: Install GVM dependencies
+- name: Install GVM dependencies(go 版本管理)
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
   with_items:
     - curl

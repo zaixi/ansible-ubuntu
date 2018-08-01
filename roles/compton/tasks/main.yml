@@ -1,6 +1,6 @@
 ---
 
-- name: Add repository
+- name: Add repository(窗口合成)
   apt_repository: repo="ppa:richardgv/compton" state=present
   when: ansible_distribution == 'Ubuntu' and (ansible_distribution_version == '14.04' or ansible_distribution_version == '14.10')
 
