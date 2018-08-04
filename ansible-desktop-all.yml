@@ -106,3 +106,6 @@
     # - { role: bower }                          # web包管理
     # - { role: webpack }                        # web打包器
     # - { role: clean, become: true }            # 升级并清理系统
+     - { role: thefuck, become: true }          # thefuck
+    # - { role: chrome, become: true }           # chrome
+    # - { role: vim, become: true }              # vim

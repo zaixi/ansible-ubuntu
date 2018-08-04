@@ -35,6 +35,7 @@
      - { role: ultra-flat-icons, become: true }  # 系统图标
      - { role: albert, become: true }            # dash
   # 开发工具
+     - { role: vim, become: true }               # vim
      - { role: atom, become: true }              # atom
      - { role: ripgrep, become: true }           # rg 搜索
      - { role: smartgit, become: true }          # git客户端

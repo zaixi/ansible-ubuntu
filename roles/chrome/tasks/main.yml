@@ -1,0 +1,14 @@
+---
+
+- name: Installing apt-key
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+- name: Add deb repository
+  apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=present
+
+- name: Install Chrome
+  apt:
+    name: google-chrome
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"

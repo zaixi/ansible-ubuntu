@@ -1,7 +1,7 @@
 ---
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
-aptcachetime: 3600
+aptcachetime: 120
 locale: "zh_CN"
 timezone: "Asia/Shanghai"
 chromium:

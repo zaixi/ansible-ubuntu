@@ -70,6 +70,7 @@
     - unrar
     - unzip
     - tcpdump
+    - autojump
 
 - name: Upgrade installed packages
   apt: upgrade=yes

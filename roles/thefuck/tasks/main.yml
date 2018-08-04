@@ -1,0 +1,15 @@
+---
+
+- name: Install thefuck package
+  pip:
+    name: thefuck
+    executable: pip3
+
+- name: test
+  shell:
+    echo "aaa"
+  register: result
+
+- name: Show debug info
+  debug:
+    var=result
