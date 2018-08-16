@@ -1,0 +1,31 @@
+---
+
+- name: Check if {{ package.name }} is installed
+  command: dpkg-query -W {{ package.name }}
+  register: package_deb_check
+  failed_when: package_deb_check.rc > 1
+  changed_when: package_deb_check.rc == 1
+
+- name: Download {{ package.url.strip().split('/')[-1] }} package
+  get_url:
+    url: "{{ package.url }}"
+    dest: "{{ [package_path,package.url.strip().split('/')[-1]]|join('/') }}"
+  when: package_deb_check.rc == 1
+  become: true
+
+- name: Install {{ package.url.strip().split('/')[-1] }} package
+  apt:
+    deb: "{{ [package_path,package.url.strip().split('/')[-1]]|join('/') }}"
+  when: package_deb_check.rc == 1
+  become: true
+
+- name: Install {{ package.url.strip().split('/')[-1] }} dependence
+  command: apt install -f
+  when: package_deb_check.rc == 1
+  become: true
+
+- name: Clean {{ package.url.strip().split('/')[-1] }} file
+  file:
+    path: "{{ [package_path,package.url.strip().split('/')[-1]]|join('/') }}"
+    state: absent
+  become: true
