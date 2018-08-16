@@ -1,0 +1,46 @@
+---
+# Include variables and define needed variables.
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Include overrides specific to RHEL 7.
+  include_vars: RedHat-7.yml
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == "7"
+
+- name: Include overrides specific to Fedora.
+  include_vars: Fedora.yml
+  when: ansible_os_family == 'RedHat' and ansible_distribution == "Fedora"
+
+# Setup/install tasks.
+- include: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+
+- name: Ensure directories to export exist
+  with_items: "{{ nfs_exports }}"
+  file:
+    state: directory
+    path: "{{ item.strip().split()[0] }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: '0775'
+  become: true
+
+
+- name: Copy exports file.
+  template:
+    src: exports.j2
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload nfs
+  become: true
+
+- name: Ensure nfs is running.
+  service: "name={{ nfs_server_daemon }} state=started enabled=yes"
+  when: nfs_exports|length
+  become: true

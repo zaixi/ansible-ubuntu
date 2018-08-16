@@ -23,6 +23,7 @@
     - xclip          # 命令行操作剪贴板
     - xdotool        # linux按键精灵
     - gparted        # 磁盘管理工具
+    - pdftohtml      # pdf转html
 
 - name: Install common desktop packages if Ubuntu 16.04
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

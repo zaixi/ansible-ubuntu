@@ -71,6 +71,8 @@
     - unzip
     - tcpdump
     - autojump
+    - adb
+    - tree
 
 - name: Upgrade installed packages
   apt: upgrade=yes

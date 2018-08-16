@@ -1,0 +1,13 @@
+---
+
+- name: Install 32bit compatible lib
+  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  with_items:
+    - lib32ncurses5
+    - lib32z1
+    - libtcl8.5:i386
+    - lib32stdc++6
+    - libreadline6:i386
+    - libexpat1:i386
+    - libssl1.0.0:i386
+  when: ansible_machine == 'x86_64'

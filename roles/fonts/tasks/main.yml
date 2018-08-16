@@ -1,0 +1,15 @@
+---
+
+- name: Create fonts directory
+  file: path="{{ ansible_env.HOME }}/tmp/fonts" state=directory
+  register: projects_directory_create
+
+- name: Clone fonts repository
+  git: repo=https://github.com/powerline/fonts.git dest="{{ ansible_env.HOME }}/tmp/fonts" update=yes accept_hostkey=yes depth=1
+  when: projects_directory_create.changed
+
+- name: Install fonts
+  shell: ./install.sh
+  args:
+    chdir: "{{ ansible_env.HOME }}/tmp/fonts"
+  when: projects_directory_create.changed

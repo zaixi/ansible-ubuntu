@@ -1,0 +1,38 @@
+---
+- name: install tftpd-hpa
+  package:
+    name: tftpd-hpa
+    state: present
+  become: true
+
+- name: install tftp-hpa
+  package:
+    name: tftp-hpa
+    state: present
+  become: true
+
+- name: create tftpboot dir
+  file:
+    state: directory
+    path: "{{ tftpd_tftpboot_dir }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    mode: '0775'
+  become: true
+
+- name: configure tftpd-hpa
+  template:
+    src: tftpd-hpa.j2
+    dest: /etc/default/tftpd-hpa
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart tftpd-hpa
+  become: true
+
+- name: start tftpd-hpa
+  service:
+    name: tftpd-hpa
+    state: started
+    enabled: yes
+  become: true

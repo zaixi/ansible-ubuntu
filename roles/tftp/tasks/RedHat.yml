@@ -1,0 +1,16 @@
+---
+- name: install tftp-server
+  package:
+    name: tftp-server
+    state: present
+  become: true
+
+#-name: configure tftp-server
+# template:
+
+- name: start tftp
+  service:
+    name: tftp
+    state: started
+    enabled: yes
+  become: true
