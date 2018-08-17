@@ -62,7 +62,7 @@
     # - { role: gimp, become: true }             # linux版ps
     # - { role: grub-customizer, become: true }  # grub 图形界面
     # - { role: hubic, become: true }            # 欧洲云盘
-    # - { role: indicator-sysmonitor, become: true } # 导航栏监控
+     - { role: sysmonito} # 导航栏监控
     # - { role: ksuperkey, become: true }        # win键可以打开程序
     # - { role: libreoffice, become: true }      # libreoffice
     # - { role: maim, become: true }             # 屏幕截图
@@ -122,6 +122,6 @@
     # - { role: bcompare}                        # 对比工具
     # - { role: lantern}                         # 蓝灯
     # - { role: zerotier}                        # zerotier
-    # - { role: pdf-editor}                      # pdf编辑器
+    # - { role: master-pdf-editor}               # pdf编辑器
     #
     # - { role: thefuck, become: true }          # thefuck

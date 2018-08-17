@@ -2,6 +2,17 @@
 
 - name: Configure the Indicator-SysMonitor PPA
   apt_repository: repo="ppa:fossfreedom/indicator-sysmonitor" state=present
+  become: true
 
 - name: Install Indicator-SysMonitor
-  apt: pkg=indicator-sysmonitor state=latest
+  apt:
+    pkg: "indicator-sysmonitor"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  become: true
+
+- name: Copy AutoStart file.
+  copy:
+    src: "indicator-sysmonitor.desktop"
+    dest: "{{ ansible_env.HOME }}/.config/autostart/indicator-sysmonitor.desktop"

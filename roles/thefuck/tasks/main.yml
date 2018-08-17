@@ -5,3 +5,4 @@
   #pip:
     #name: thefuck
     #executable: pip3
+    #state: present

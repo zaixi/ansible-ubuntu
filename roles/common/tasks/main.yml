@@ -73,6 +73,7 @@
     - autojump
     - adb
     - tree
+    - trash-cli
 
 - name: Upgrade installed packages
   apt: upgrade=yes
