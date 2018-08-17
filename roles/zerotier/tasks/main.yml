@@ -1,0 +1,19 @@
+---
+
+- name: Install curl packages
+  apt:
+    pkg: "curl"
+    state: latest
+  become: true
+
+- name: install zerotier
+  shell:
+    curl -s https://install.zerotier.com/ | sudo bash
+  args:
+    warn: no
+  become: true
+
+- name: join zerotier Network
+  command:
+    zerotier-cli join "{{ zerotier.net_id }}"
+  become: true

@@ -4,6 +4,7 @@
   hosts: localhost
   roles:
 # Common roles
+    # - { role: hosts}                       # hosts 文件修改
     # - { role: locales, become: true }      # 配置语言和时区
     # - { role: common, become: true }       # 安装通用软件,需要看看哪些需要安装
     # - { role: zsh, become: true }          # zshrc还需要更改
@@ -94,7 +95,6 @@
     # - { role: wine, become: true }             # Windows软件环境
     # - { role: workrave, become: true }         # 健康提醒
     # - { role: xfce-dockbarx, become: true }    # xfce桌面
-    # - { role: xmind, become: true }            # 思维导图
     # bspwm
     # - { role: sxhkd, become: true }            # x热键守护进程
     # - { role: bspwm, become: true }            # 窗口管理器
@@ -106,6 +106,22 @@
     # - { role: bower }                          # web包管理
     # - { role: webpack }                        # web打包器
     # - { role: clean, become: true }            # 升级并清理系统
-     - { role: thefuck, become: true }          # thefuck
-    # - { role: chrome, become: true }           # chrome
     # - { role: vim, become: true }              # vim
+    # - { role: chrome, become: true }           # chrome
+    # - { role: 32bitlib, become: true }         # 32位兼容库
+    # - { role: arm, become: true }              # ARM工具链
+    # - { role: fonts}                           # powerline字体
+    # - { role: tftp}                            # tftp 服务器
+    # - { role: nfs}                             # nfs 服务器
+    # - { role: samba}                           # samba 服务器
+    # - { role: wps}                             # wps
+    # - { role: wps_fonts}                       # wps 字体
+    # - { role: jianguoyun}                      # 坚果云
+    # - { role: sogoupinyin}                     # 搜狗输入法
+    # - { role: go-for-it}                       # go-for-it
+    # - { role: bcompare}                        # 对比工具
+    # - { role: lantern}                         # 蓝灯
+    # - { role: zerotier}                        # zerotier
+    # - { role: pdf-editor}                      # pdf编辑器
+    #
+    # - { role: thefuck, become: true }          # thefuck

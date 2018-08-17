@@ -1,0 +1,6 @@
+---
+
+package:
+  name: "lantern"
+  #url: "https://getlantern.org/lantern-installer-64-bit.deb"
+  url: "https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb"

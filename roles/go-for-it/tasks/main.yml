@@ -1,0 +1,15 @@
+---
+
+- name: Add go-for-it repository
+  apt_repository:
+    repo: "ppa:mank319/go-for-it"
+    state: present
+  become: true
+
+- name: Install go-for-it
+  apt:
+    name: "go-for-it"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  become: true
