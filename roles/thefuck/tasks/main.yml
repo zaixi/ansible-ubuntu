@@ -1,15 +1,7 @@
 ---
 
 - name: Install thefuck package
-  pip:
-    name: thefuck
-    executable: pip3
-
-- name: test
-  shell:
-    echo "aaa"
-  register: result
-
-- name: Show debug info
-  debug:
-    var=result
+  apt: pkg="thefuck" state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  #pip:
+    #name: thefuck
+    #executable: pip3

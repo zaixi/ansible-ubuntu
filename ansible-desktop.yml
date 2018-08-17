@@ -4,6 +4,7 @@
   hosts: localhost
   roles:
 # Common roles
+     - { role: hosts}                            # hosts 文件修改
      - { role: locales, become: true }           # 配置语言和时区
      - { role: common, become: true }            # 安装通用软件
      - { role: zsh, become: true }               # zsh
@@ -42,7 +43,6 @@
      - { role: dbeaver, become: true }           # 数据库工具
      - { role: vagrant, become: true }           # VirtualBox管理工具
      - { role: virtualbox, become: true }        # 虚拟机
-     - { role: xmind, become: true }             # 思维导图
   # 通讯
      - { role: thunderbird, become: true }       # 邮件客户端
      - { role: filezilla, become: true }         # ftp
@@ -51,6 +51,11 @@
   # 多媒体
      - { role: spotify, become: true }           # 音乐客户端
      - { role: gimp, become: true }              # linux版ps
-
      - { role: clean, become: true }             # 升级并清理系统
+
+     - { role: vim, become: true }               # vim
+     - { role: chrome, become: true }            # chrome
+     - { role: 32bitlib, become: true }          # 32位兼容库
+     - { role: arm, become: true }               # ARM工具链
+     - { role: fonts}                            # powerline字体
 
