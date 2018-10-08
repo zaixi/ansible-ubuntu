@@ -1,0 +1,6 @@
+---
+
+opengrok:
+  path: "{{ ansible_env.HOME }}/github"
+  server_port: 8090
+  ssh_port: 2223

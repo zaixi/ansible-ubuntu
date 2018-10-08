@@ -62,7 +62,7 @@
     # - { role: gimp, become: true }             # linux版ps
     # - { role: grub-customizer, become: true }  # grub 图形界面
     # - { role: hubic, become: true }            # 欧洲云盘
-     - { role: sysmonito} # 导航栏监控
+     #- { role: sysmonito} # 导航栏监控
     # - { role: ksuperkey, become: true }        # win键可以打开程序
     # - { role: libreoffice, become: true }      # libreoffice
     # - { role: maim, become: true }             # 屏幕截图
@@ -123,5 +123,12 @@
     # - { role: lantern}                         # 蓝灯
     # - { role: zerotier}                        # zerotier
     # - { role: master-pdf-editor}               # pdf编辑器
-    #
-    # - { role: thefuck, become: true }          # thefuck
+    # - { role: thefuck}                         # thefuck
+    # - { role: udev}                            # udev
+    # - { role: xx-net}                          # XX-NET
+    # - { role: solarized}                       # ls颜色
+    # - { role: vscode}                          # vscode
+    # - { role: opengrok}                        # OpenGrok
+    # - { role: pdf2htmlEX}                      # pdf2htmlEX
+    # - { role: progress}                        # progress
+     - { role: GouYong}                          # 屏幕取词翻译

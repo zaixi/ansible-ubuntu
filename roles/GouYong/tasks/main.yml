@@ -1,0 +1,18 @@
+---
+
+- name: Install Python packages depend
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - python-gobject
+    - libcairo2-dev
+    - gir1.2-gdl-3
+    - gir1.2-appindicator3-0.1
+  become: true
+
+- name: Install GouYong package
+  command: sudo pip3 install GouYong
+  #pip:
+    #name: GouYong
+    #executable: pip3
+    #state: present
+  #become: true

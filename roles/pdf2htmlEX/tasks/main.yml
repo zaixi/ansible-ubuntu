@@ -1,0 +1,6 @@
+---
+
+- name: Pull pdf2htmlEX Image
+  docker_image:
+    name: bwits/pdf2htmlex
+  become: true

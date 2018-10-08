@@ -1,0 +1,33 @@
+---
+
+- name: Install progress(cp mv dd ...进度显示)
+  apt: pkg={{ item }} state=latest
+  become: true
+  with_items:
+    - libncurses5-dev
+    - libappindicator1
+    - libindicator7
+    - progress
+
+#- name: Clone progress(cp mv dd ...进度显示)
+  #git: repo=https://github.com/Xfennec/progress dest="{{ ansible_env.HOME }}/.cache/install/progress" update=yes accept_hostkey=yes
+  #register: progress_git
+
+#- name: Install depend
+  #apt: pkg={{ item }} state=latest
+  #become: true
+  #with_items:
+    #- libncurses5-dev
+
+#- name: Make progress
+  #command: make
+  #args:
+    #chdir: "{{ ansible_env.HOME }}/.cache/install/progress"
+  #when: progress_git.changed
+
+#- name: Make install progress
+  #command: make install
+  #args:
+    #chdir: "{{ ansible_env.HOME }}/.cache/install/progress"
+  #become: true
+  #when: progress_git.changed
