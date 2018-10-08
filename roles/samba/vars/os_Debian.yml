@@ -1,0 +1,39 @@
+# roles/samba/vars/os_Debian.yml
+---
+
+samba_packages:
+  - samba-common
+  - samba
+  - samba-client
+
+samba_selinux_packages: []
+samba_selinux_booleans: []
+
+samba_configuration: /etc/samba/smb.conf
+samba_username_map_file: /etc/samba/smbusers
+
+# The name of the Samba service in older releases (Ubuntu 14.04,
+# Debian <8) is "samba".
+samba_services:
+  - smbd
+  - nmbd
+
+samba_www_documentroot: /var/www
+
+samba_server_string: '{{ ansible_env.USER }} server'
+#samba_workgroup: WORKGROUP
+
+samba_log: /var/log/samba.log
+
+samba_map_to_guest: Never
+samba_users:
+  - name: "{{ ansible_env.USER }}"
+    password: "{{ ansible_env.USER }}"
+
+samba_shares_root: /opt/samba
+samba_shares:
+  - name: "{{ ansible_env.USER }}"
+    comment: 'Only readable/writeable by "{{ ansible_env.USER }}"'
+    valid_users: "{{ ansible_env.USER }}"
+    write_list: "{{ ansible_env.USER }}"
+    owner: "{{ ansible_env.USER }}"

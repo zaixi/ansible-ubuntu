@@ -1,0 +1,4 @@
+{% for info in usb_info %}
+# {{ info.name  }}
+SUBSYSTEM=="usb", ATTRS{idVendor}=={{ info.ID.strip().split(':')[0] }}, ATTRS{idProduct}=={{ info.ID.strip().split(':')[1] }}, MODE="0666"
+{% endfor %}

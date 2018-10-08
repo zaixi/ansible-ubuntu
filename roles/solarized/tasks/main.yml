@@ -1,0 +1,27 @@
+---
+
+- name: Install solarized theme for GNU ls
+  git: repo=https://github.com/seebi/dircolors-solarized dest="{{ ansible_env.HOME }}/.cache/dircolors-solarized" update=yes accept_hostkey=yes depth=1
+  register: ls_git
+
+- name: copying dircolors to home
+  copy:
+    src: "{{ ansible_env.HOME }}/.cache/dircolors-solarized/dircolors.{{ ls_dircolors }}"
+    dest: "{{ ansible_env.HOME }}/.dircolors"
+  when: ls_git.changed
+
+- name: Configure GNU ls
+  command: dircolors .dircolors
+  args:
+    chdir: "{{ ansible_env.HOME }}"
+  when: ls_git.changed
+
+- name: Install solarized theme for Gnome-Terminal
+  git: repo=https://github.com/coolwanglu/gnome-terminal-colors-solarized dest="{{ ansible_env.HOME }}/.cache/gnome-terminal-colors-solarized" update=yes accept_hostkey=yes depth=1
+  register: terminal_git
+
+- name: Configure
+  command: ./set_dark.sh
+  args:
+    chdir: "{{ ansible_env.HOME }}/.cache/gnome-terminal-colors-solarized"
+  when: terminal_git.changed

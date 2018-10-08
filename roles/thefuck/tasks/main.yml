@@ -1,8 +1,15 @@
 ---
 
+- name: Install Python packages depend
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - python-psutil
+    - python3-psutil
+  become: true
+
 - name: Install thefuck package
-  apt: pkg="thefuck" state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  #pip:
-    #name: thefuck
-    #executable: pip3
-    #state: present
+  pip:
+    name: thefuck
+    executable: pip3
+    state: present
+  become: true

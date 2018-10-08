@@ -1,0 +1,11 @@
+---
+
+usb_info:
+  - name: "NationalChip USB"
+    ID: "a700:0001"
+  - name: "Google Inc"
+    ID: "18d1:0001"
+  - name: "unknown"
+    ID: "09fb:6010"
+  - name: "unknown"
+    ID: "09fb:6810"

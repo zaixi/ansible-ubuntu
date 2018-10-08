@@ -1,0 +1,48 @@
+---
+# See https://github.com/XX-net/XX-Net
+
+- name: Install XX-Net dependencies
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - libnss3-tools
+    - python-gtk2
+    - libffi-dev
+    - python-appindicator
+    - miredo
+  become: true
+
+- name: Install XX-Net
+  git: repo=https://github.com/XX-net/XX-Net dest="/opt/XX-Net" update=yes accept_hostkey=yes depth=1
+  register: xx_net_git
+  become: true
+
+- name: link XX-Net script
+  file:
+    src: "/opt/XX-Net/xx_net.sh"
+    dest: "/etc/init.d/xx_net"
+    state: link
+  become: true
+  when: xx_net_git.changed
+
+- name: enable xx-net service
+  command: systemctl enable xx_net
+  become: true
+  when: xx_net_git.changed
+
+- name: start xx-net
+  command: /opt/XX-Net/xx_net.sh
+  become: true
+  when: xx_net_git.changed
+
+#- name: Ensure /etc/rc.local exists
+  #file:
+    #name: "/etc/rc.local"
+  #become: true
+
+#- name: add miredo rc.local
+  #lineinfile: dest=/etc/rc.local regexp="miredo" line="sudo miredo"
+  #become: true
+
+#- name: add miredo rc.local
+  #lineinfile: dest=/etc/rc.local regexp="miredo" line="sudo /etc/init.d/miredo restart"
+  #become: true

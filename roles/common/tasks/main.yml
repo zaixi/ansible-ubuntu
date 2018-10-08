@@ -74,6 +74,9 @@
     - adb
     - tree
     - trash-cli
+    - cifs-utils
+    - pdftohtml
+    - tmux
 
 - name: Upgrade installed packages
   apt: upgrade=yes

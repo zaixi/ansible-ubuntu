@@ -1,0 +1,18 @@
+# roles/samba/vars/os_Archlinux.yml
+---
+
+samba_packages:
+  - samba
+  - smbclient
+
+samba_selinux_packages: []
+samba_selinux_booleans: []
+
+samba_configuration: /etc/samba/smb.conf
+samba_username_map_file: /etc/samba/smbusers
+
+samba_services:
+  - smbd
+  - nmbd
+
+samba_www_documentroot: /var/www

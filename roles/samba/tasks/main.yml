@@ -1,0 +1,126 @@
+# File: roles/samba/tasks/main.yml
+---
+
+- name: Include OS specific variables
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "os_{{ ansible_distribution }}.yml"
+    - "os_{{ ansible_os_family }}.yml"
+  tags: samba
+
+- name: Install Samba packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ samba_packages }}"
+  become: true
+  tags: samba
+
+- name: Install SELinux package
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ samba_selinux_packages }}"
+  when: ansible_selinux is defined and ansible_selinux.status == 'enabled'
+  become: true
+  tags: samba
+
+- name: Make sure SELinux boolean settings are correct
+  seboolean:
+    name: "{{ item }}"
+    state: true
+    persistent: true
+  with_items: "{{ samba_selinux_booleans }}"
+  when: ansible_selinux is defined and ansible_selinux.status == 'enabled'
+  tags: samba
+
+- name: Create Samba shares root directory
+  file:
+    state: directory
+    path: "{{ samba_shares_root }}"
+    owner: root
+    group: root
+    mode: '0755'
+  when: samba_shares
+  become: true
+  tags: samba
+
+- name: Create share directories
+  with_items: "{{ samba_shares }}"
+  file:
+    state: directory
+    path: "{{ item.path|default([samba_shares_root,item.name]|join('/')) }}"
+    owner: "{{ item.owner|default('root') }}"
+    group: "{{ item.group|default('users') }}"
+    mode: "{{ item.directory_mode|default('0775') }}"
+    setype: "{{ item.setype|default('samba_share_t') }}"
+  become: true
+  tags: samba
+
+- name: Ensure webserver document root exists
+  file:
+    name: "{{ samba_www_documentroot }}"
+    state: directory
+  become: true
+  when: samba_create_varwww_symlinks
+  tags: samba
+
+- name: Create link to shares in webserver document root
+  file:
+    state: link
+    path: "{{ samba_www_documentroot }}/{{ item.name }}"
+    src: "{{ item.path|default([samba_shares_root,item.name]|join('/')) }}"
+  with_items: "{{ samba_shares }}"
+  when: samba_create_varwww_symlinks
+  become: true
+  tags: samba
+
+- name: Samba configuration
+  template:
+    dest: "{{ samba_configuration }}"
+    src: smb.conf.j2
+    validate: 'testparm -s %s'
+  become: true
+  notify:
+    - Restart Samba services
+  tags: samba
+
+- name: Create username map file if needed
+  template:
+    dest: "{{ samba_username_map_file }}"
+    src: smbusers.j2
+  notify:
+    - Restart Samba services
+  become: true
+  tags: samba
+  when: samba_username_map is defined
+
+- name: Start Samba service(s)
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: true
+  with_items: "{{ samba_services }}"
+  become: true
+  tags: samba
+
+- name: Create users
+  user:
+    name: "{{ item.name }}"
+    groups: users
+    append: true
+    create_home: no
+    update_password: on_create
+  with_items: "{{ samba_users }}"
+  become: true
+
+- name: Create Samba users if they don't exist yet
+  shell: >
+    (pdbedit --user={{ item.name }} 2>&1 > /dev/null) \
+    || (echo {{ item.password }}; echo {{ item.password }}) \
+    | smbpasswd -s -a {{ item.name }}
+  with_items: "{{ samba_users }}"
+  become: true
+  register: create_user_output
+  changed_when: "'Added user' in create_user_output.stdout"
+  tags: samba
