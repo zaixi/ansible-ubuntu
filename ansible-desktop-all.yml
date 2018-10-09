@@ -109,7 +109,8 @@
     # - { role: vim, become: true }              # vim
     # - { role: chrome, become: true }           # chrome
     # - { role: 32bitlib, become: true }         # 32位兼容库
-    # - { role: arm, become: true }              # ARM工具链
+    # - { role: arm}                             # ARM工具链
+    # - { role: jlink}                           # jlink
     # - { role: fonts}                           # powerline字体
     # - { role: tftp}                            # tftp 服务器
     # - { role: nfs}                             # nfs 服务器
@@ -131,4 +132,4 @@
     # - { role: opengrok}                        # OpenGrok
     # - { role: pdf2htmlEX}                      # pdf2htmlEX
     # - { role: progress}                        # progress
-     - { role: GouYong}                          # 屏幕取词翻译
+    # - { role: GouYong}                         # 屏幕取词翻译

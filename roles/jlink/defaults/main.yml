@@ -1,0 +1,6 @@
+---
+
+package_path: "/tmp"
+package:
+  name: "jlink"
+  url: "https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb"

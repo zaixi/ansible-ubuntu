@@ -6,3 +6,5 @@
     - gdb-arm-none-eabi
     - gcc-arm-none-eabi
     - gcc-arm-linux-gnueabihf
+    - gdb-multiarch
+  become: true
