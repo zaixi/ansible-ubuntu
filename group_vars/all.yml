@@ -2,8 +2,6 @@
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
 aptcachetime: 120
-locale: "zh_CN"
-timezone: "Asia/Shanghai"
 chromium:
   set_default: true
   policy: false
@@ -34,3 +32,30 @@ vhosts:
     vhost: "default56.dev"
     path: "{{ ansible_env.HOME }}/projects/default-5.6"
     php: "5.6"
+
+package_list:
+  jlink:
+    name: "jlink"
+    url: "https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb"
+  wps:
+    name: "wps-office"
+    url: "http://kdl.cc.ksosoft.com/wps-community/download/6634/wps-office_10.1.0.6634_amd64.deb"
+  wps_fonts:
+    name: "wps-office-fonts"
+    url: "http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb"
+  jianguoyun:
+    name: "nautilus-nutstore"
+    url: "https://www.jianguoyun.com/static/exe/installer/ubuntu/nautilus_nutstore_amd64.deb"
+  sogoupinyin:
+    name: "sogoupinyin"
+    url: "http://cdn2.ime.sogou.com/dl/index/1524572264/sogoupinyin_2.2.0.0108_amd64.deb"
+  bcompare:
+    name: "bcompare"
+    url: "http://www.scootersoftware.com/bcompare-4.2.4.22795_amd64.deb"
+  lantern:
+    name: "lantern"
+    #url: "https://getlantern.org/lantern-installer-64-bit.deb"
+    url: "https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb"
+  master-pdf-editor:
+    name: "master-pdf-editor"
+    url: "https://code-industry.net/public/master-pdf-editor-5.1.12_qt5.amd64.deb"

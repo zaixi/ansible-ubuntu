@@ -45,7 +45,6 @@
     # - { role: desktop-autostart, become: true } #添加删除自启动
     # - { role: desktop-preferences-unity }      # 界面设置，快捷键设置
     # - { role: adapta-theme, become: true }      # 界面主题
-    # - { role: albert, become: true }           # dash
     # - { role: altyo, become: true }            # 下拉终端
     # - { role: arc-theme, become: true }        # 界面主题
     # - { role: atom, become: true }             # atom
@@ -106,9 +105,9 @@
     # - { role: bower }                          # web包管理
     # - { role: webpack }                        # web打包器
     # - { role: clean, become: true }            # 升级并清理系统
-    # - { role: vim, become: true }              # vim
-    # - { role: chrome, become: true }           # chrome
-    # - { role: 32bitlib, become: true }         # 32位兼容库
+    # - { role: vim}                             # vim
+    # - { role: chrome}                          # chrome
+    # - { role: 32bitlib}                        # 32位兼容库
     # - { role: arm}                             # ARM工具链
     # - { role: jlink}                           # jlink
     # - { role: fonts}                           # powerline字体
@@ -131,5 +130,7 @@
     # - { role: vscode}                          # vscode
     # - { role: opengrok}                        # OpenGrok
     # - { role: pdf2htmlEX}                      # pdf2htmlEX
-    # - { role: progress}                        # progress
+    # - { role: progress}                        # cp,mv进度
     # - { role: GouYong}                         # 屏幕取词翻译
+    # - { role: qemu}                            # qemu
+    # - { role: albert}                          # dash

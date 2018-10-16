@@ -1,5 +1,3 @@
 ---
 
-package:
-  name: "wps-office"
-  url: "http://kdl.cc.ksosoft.com/wps-community/download/6634/wps-office_10.1.0.6634_amd64.deb"
+package: "{{ package_list[role_name] }}"

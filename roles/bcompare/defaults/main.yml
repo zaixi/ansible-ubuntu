@@ -1,8 +1,6 @@
 ---
 
-package:
-  name: "bcompare"
-  url: "http://www.scootersoftware.com/bcompare-4.2.4.22795_amd64.deb"
+package: "{{ package_list[role_name] }}"
 
 bcompare:
   hack: true

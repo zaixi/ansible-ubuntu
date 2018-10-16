@@ -1,5 +1,3 @@
 ---
 
-package:
-  name: "master-pdf-editor"
-  url: "https://code-industry.net/public/master-pdf-editor-5.1.12_qt5.amd64.deb"
+package: "{{ package_list[role_name] }}"

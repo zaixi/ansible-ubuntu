@@ -6,8 +6,15 @@
   failed_when: package_deb_check.rc > 1
   changed_when: package_deb_check.rc == 1
 
+- name: Ensure deb package file does not exist
+  file:
+    path: "{{ [package_path,package.url.strip().split('/')[-1]]|join('/') }}"
+    state: absent
+  become: true
+  when: package_deb_check.rc == 1
+
 - name: Download {{ package.url.strip().split('/')[-1] }} package
-  command: "wget --post-data 'accept_license_agreement=accepted&submit=Download+software' https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb"
+  command: "wget --post-data 'accept_license_agreement=accepted&submit=Download+software' {{ package.url }}"
   args:
     chdir: "{{ package_path }}"
     warn: False

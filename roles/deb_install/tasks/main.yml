@@ -6,6 +6,13 @@
   failed_when: package_deb_check.rc > 1
   changed_when: package_deb_check.rc == 1
 
+- name: Ensure deb package file does not exist
+  file:
+    path: "{{ [package_path,package.url.strip().split('/')[-1]]|join('/') }}"
+    state: absent
+  become: true
+  when: package_deb_check.rc == 1
+
 - name: Download {{ package.url.strip().split('/')[-1] }} package
   get_url:
     url: "{{ package.url }}"
