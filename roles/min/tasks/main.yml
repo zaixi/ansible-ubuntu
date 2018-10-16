@@ -12,6 +12,7 @@
 
 - name: Install Min
   apt: deb="/tmp/download-min-latest.deb"
+  become: true
   when: min_check_deb.rc == 1
 
 - name: Clean Min deb file

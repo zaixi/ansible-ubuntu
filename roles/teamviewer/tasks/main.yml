@@ -8,6 +8,7 @@
 
 - name: Install TeamViewer dependencies
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
   with_items:
     - libjpeg62
     - libxinerama1
@@ -20,6 +21,7 @@
 
 - name: Install TeamViewer
   apt: deb="/tmp/download-teamviewer-latest.deb"
+  become: true
   when: teamviewer_check_deb.rc == 1
 
 - name: Clean TeamViewer deb file

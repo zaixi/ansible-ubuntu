@@ -9,6 +9,7 @@
     - automake
     - gtk2-engines-murrine
     - gnome-themes-standard
+  become: true
 
 - name: Install Adapta-Theme
   git: repo=https://github.com/tista500/Adapta/ dest="{{ ansible_env.HOME }}/.cache/adapta-theme" update=yes accept_hostkey=yes
@@ -31,6 +32,7 @@
     chdir: "{{ ansible_env.HOME }}/.cache/adapta-theme"
   register: adapta_theme_make
   when: adapta_theme_git.changed
+  become: true
 
 - name: Set GTK Theme to Adapta-Nokto
   command: "gsettings set org.gnome.desktop.interface gtk-theme Adapta-Nokto"

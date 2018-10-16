@@ -2,6 +2,7 @@
 
 - name: Install common desktop packages
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
   with_items:
     - bleachbit      # 系统垃圾清理
     - easytag        # 音频文件元数据管理
@@ -27,15 +28,19 @@
 
 - name: Install common desktop packages if Ubuntu 16.04
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
   with_items:
     - fonts-hack-ttf
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Block Ubuntu product search in system host file
   lineinfile: dest=/etc/hosts regexp="^127\.0\.0\.1   productsearch.ubuntu.com$" line="127.0.0.1   productsearch.ubuntu.com" state=present
+  become: true
 
 - name: Ensure that lightdm configuration directory exists
   file: path=/etc/lightdm/lightdm.conf.d state=directory
+  become: true
 
 - name: Disable guest session in lightdm
   copy: src="50-no-guest.conf" dest="/etc/lightdm/lightdm.conf.d/50-no-guest.conf" force=no
+  become: true

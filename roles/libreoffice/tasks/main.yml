@@ -2,6 +2,8 @@
 
 - name: Add LibreOffice repository(开源office)
   apt_repository: repo="ppa:libreoffice/libreoffice-5-1" state=present
+  become: true
 
 - name: Install LibreOffice
   apt: name=libreoffice state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true

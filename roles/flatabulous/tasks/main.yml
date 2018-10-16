@@ -3,6 +3,7 @@
 - name: Install Flatabulous
   git: repo=https://github.com/anmoljagetia/Flatabulous dest=/usr/share/themes/Flatabulous update=yes accept_hostkey=yes
   register: flatabulous_git
+  become: true
 
 - name: Set GTK Theme to Flatabulous
   command: "gsettings set org.gnome.desktop.interface gtk-theme Flatabulous"

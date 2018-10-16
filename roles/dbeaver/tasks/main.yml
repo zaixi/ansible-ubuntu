@@ -13,6 +13,7 @@
 - name: Install DBeaver
   apt: deb="/tmp/download-dbeaver-latest.deb"
   when: dbeaver_check_deb.rc == 1
+  become: true
 
 - name: Clean DBeaver deb file
   file: path=/tmp/download-dbeaver-latest.deb state=absent

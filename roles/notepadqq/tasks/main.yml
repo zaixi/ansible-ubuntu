@@ -2,6 +2,8 @@
 
 - name: Add Notepadqq repository(notepadqq编辑器)
   apt_repository: repo="ppa:notepadqq-team/notepadqq" state=present
+  become: true
 
 - name: Install Notepadqq text editor
   apt: name=notepadqq state=latest update_cache=yes
+  become: true

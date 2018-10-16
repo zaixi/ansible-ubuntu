@@ -2,8 +2,10 @@
 
 - name: Configure the Geary PPA(轻量级mail客户端)
   apt_repository: repo="ppa:yorba/ppa" state=present
+  become: true
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'
 
 - name: Install Geary
   apt: pkg="geary" state=latest
+  become: true
 

@@ -9,6 +9,7 @@
 
 - name: Cleanup ripgrep existing installation
   file: path="/usr/local/bin/ripgrep" state=absent
+  become: true
   when: ripgrep_version | failed
   ignore_errors: true
   failed_when: false
@@ -24,14 +25,17 @@
 
 - name: Install ripgrep
   command: mv /tmp/{{ ripgrep.dir }}/rg /usr/local/bin/rg creates="/usr/local/bin/rg" removes="/tmp/{{ ripgrep.dir }}/rg"
+  become: true
   when: ripgrep_version | failed
 
 - name: Install ripgrep manapage
   command: mv /tmp/{{ ripgrep.dir }}/rg.1 /usr/share/man/man1/rg.1 creates="/usr/share/man/man1/rg.1" removes="/tmp/{{ ripgrep.dir }}/rg.1"
+  become: true
   when: ripgrep_version | failed
 
 - name: Make ripgrep executable
   file: path=/usr/local/bin/rg mode=0755
+  become: true
   when: ripgrep_version | failed
 
 - name: Cleanup ripgrep installer

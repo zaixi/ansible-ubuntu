@@ -12,6 +12,7 @@
 
 - name: Install Remarkable {{ remarkable.version }}
   apt: deb="/tmp/download-remarkable-latest.deb"
+  become: true
   when: remarkable_check_deb.rc == 1
 
 - name: Clean Remarkable deb file

@@ -4,24 +4,121 @@
   hosts: localhost
   roles:
 # Common roles
-    # - { role: hosts}                       # hosts 文件修改
-    # - { role: locales, become: true }      # 配置语言和时区
-    # - { role: common, become: true }       # 安装通用软件,需要看看哪些需要安装
-    # - { role: zsh, become: true }          # zshrc还需要更改
-    # - { role: dotfiles, become: true }     # 待定
-    # - { role: java-openjdk, become: true } # java jdk
-    # - { role: phantomjs, become: true }    # 无界面浏览器
-    # - { role: projects-installer }         # 作者自己的工程
+    # - { role: hosts}                     # hosts 文件修改
+    # - { role: locales}                   # 配置语言和时区
+    # - { role: common}                    # 安装通用软件,需要看看哪些需要安装
+    # - { role: zsh}                       # zshrc还需要更改
+    # - { role: java-openjdk}              # java jdk
+    # - { role: phantomjs}                 # 无界面浏览器
 # Server roles
-    # - { role: apache2, become: true }
-    # - { role: apache2-php, become: true }
+    # - { role: docker}                    # docker
+    # - { role: fail2ban}                  # 防止暴力破解
+    # - { role: python}                    # python
+    # - { role: ssh}                       # ssh
+# Desktop roles
+    # - { role: desktop}                   # 安装软件,禁用guest账户
+    # - { role: desktop-cleanup}           # 删除亚马逊图标等
+    # - { role: desktop-autostart}         # 添加删除自启动
+    # - { role: desktop-preferences-unity} # 界面设置，快捷键设置
+    # - { role: adapta-theme}              # 界面主题
+    # - { role: altyo}                     # 下拉终端
+    # - { role: arc-theme}                 # 界面主题
+    # - { role: atom}                      # atom
+    # - { role: chromium}                  # chromium浏览器,chrome未安装
+    # - { role: claws-mail}                # 邮件客户端
+    # - { role: compton}                   # 窗口合成
+    # - { role: copyq}                     # 高级剪贴板
+    # - { role: dbeaver}                   # 数据库工具
+    # - { role: filezilla}                 # ftp
+    # - { role: firefox}                   # 火狐浏览器
+    # - { role: flatabulous}               # 界面主题
+    # - { role: gdrive}                    # 谷歌云盘
+    # - { role: geary}                     # 轻量级mail客户端
+    # - { role: gimp}                      # linux版ps
+    # - { role: grub-customizer}           # grub 图形界面
+    # - { role: hubic}                     # 欧洲云盘
+    # - { role: sysmonito}                 # 导航栏监控
+    # - { role: ksuperkey}                 # win键可以打开程序
+    # - { role: libreoffice}               # libreoffice
+    # - { role: maim}                      # 屏幕截图
+    # - { role: min}                       # 浏览器
+    # - { role: mysql-workbench}           # mysql图形界面
+    # - { role: nautilus-plugins}          # 文件管理器增强
+    # - { role: nemo}                      # Ubuntu 12的文件管理器
+    # - { role: notepadqq}                 # notepadqq编辑器
+    # - { role: notify-osd}                # 通知osd
+    # - { role: qutebrowser}               # 类似vim的浏览器
+    # - { role: remarkable}                # markdown编辑器
+    # - { role: remmina}                   # 远程桌面
+    # - { role: ripgrep}                   # rg 搜索
+    # - { role: rofi}                      # 窗口切换器
+    # - { role: shutter}                   # 截图工具
+    # - { role: sift}                      # 类似grep
+    # - { role: slop}                      # 显示选中区域坐标
+    # - { role: skype}                     # skype聊天
+    # - { role: smartgit}                  # git客户端
+    # - { role: spotify}                   # 音乐客户端
+    # - { role: sublime3}                  # sublime3
+    # - { role: sunflower}                 # 双面板文件管理器
+    # - { role: teamviewer}                # 远程桌面
+    # - { role: thunderbird}               # 邮件客户端
+    # - { role: ultra-flat-icons}          # 系统图标
+    # - { role: urxvt-perls }              # urxvt终端扩展
+    # - { role: vagrant}                   # VirtualBox管理工具
+    # - { role: virtualbox}                # 虚拟机
+    # - { role: vokoscreen}                # 屏幕录制软件
+    # - { role: wine}                      # Windows软件环境
+    # - { role: workrave}                  # 健康提醒
+    # - { role: xfce-dockbarx}             # xfce桌面
+# bspwm
+    # - { role: sxhkd}                     # x热键守护进程
+    # - { role: bspwm}                     # 窗口管理器
+    # - { role: bspwm-panel}               # 窗口管理器
+    # - { role: bspwm-environment}         # 窗口管理器
+# User roles
+    # - { role: gulp}                      # js自动构建
+    # - { role: browsersync }              # 浏览器同步测试工具
+    # - { role: bower }                    # web包管理
+    # - { role: webpack }                  # web打包器
+    # - { role: clean, become: true }      # 升级并清理系统
+    # - { role: vim}                       # vim
+    # - { role: chrome}                    # chrome
+    # - { role: 32bitlib}                  # 32位兼容库
+    # - { role: arm}                       # ARM工具链
+    # - { role: jlink}                     # jlink
+    # - { role: fonts}                     # powerline字体
+    # - { role: tftp}                      # tftp 服务器
+    # - { role: nfs}                       # nfs 服务器
+    # - { role: samba}                     # samba 服务器
+    # - { role: wps}                       # wps
+    # - { role: wps_fonts}                 # wps 字体
+    # - { role: jianguoyun}                # 坚果云
+    # - { role: sogoupinyin}               # 搜狗输入法
+    # - { role: go-for-it}                 # go-for-it
+    # - { role: bcompare}                  # 对比工具
+    # - { role: lantern}                   # 蓝灯
+    # - { role: zerotier}                  # zerotier
+    # - { role: master-pdf-editor}         # pdf编辑器
+    # - { role: thefuck}                   # thefuck
+    # - { role: udev}                      # udev
+    # - { role: xx-net}                    # XX-NET
+    # - { role: solarized}                 # ls颜色
+    # - { role: vscode}                    # vscode
+    # - { role: opengrok}                  # OpenGrok
+    # - { role: pdf2htmlEX}                # pdf2htmlEX
+    # - { role: progress}                  # cp,mv进度
+    # - { role: GouYong}                   # 屏幕取词翻译
+    # - { role: qemu}                      # qemu
+    # - { role: albert}                    # dash
+    #
+    #
+    # - { role: apache2}
+    # - { role: apache2-php}
     # - { role: beanstalkd, become: true }
     # - { role: blackfire, become: true }
     # - { role: composer, become: true }
-    # - { role: docker, become: true }        # docker
     # - { role: elasticsearch, become: true }
     # - { role: exim, become: true }
-    # - { role: fail2ban, become: true }
     # - { role: gvm, become: true }
     # - { role: hhvm, become: true }
     # - { role: mailcatcher, become: true }
@@ -35,102 +132,5 @@
     # - { role: php, become: true }
     # - { role: php-pecl, become: true }
     # - { role: php-phar-tools, become: true }
-    # - { role: python, become: true }            #python
     # - { role: redis, become: true }
     # - { role: rbenv, become: true }
-    # - { role: ssh, become: true }               #ssh
-    # Desktop roles
-    # - { role: desktop, become: true }          # 安装软件,禁用guest账户
-    # - { role: desktop-cleanup, become: true }  # 删除亚马逊图标等
-    # - { role: desktop-autostart, become: true } #添加删除自启动
-    # - { role: desktop-preferences-unity }      # 界面设置，快捷键设置
-    # - { role: adapta-theme, become: true }      # 界面主题
-    # - { role: altyo, become: true }            # 下拉终端
-    # - { role: arc-theme, become: true }        # 界面主题
-    # - { role: atom, become: true }             # atom
-    # - { role: chromium, become: true }         # chromium浏览器,chrome未安装
-    # - { role: claws-mail, become: true }       # 邮件客户端
-    # - { role: compton, become: true }          # 窗口合成
-    # - { role: copyq, become: true }            # 高级剪贴板
-    # - { role: dbeaver, become: true }          # 数据库工具
-    # - { role: filezilla, become: true }        # ftp
-    # - { role: firefox, become: true }          # 火狐浏览器
-    # - { role: flatabulous, become: true }      # 界面主题
-    # - { role: gdrive, become: true }           # 谷歌云盘
-    # - { role: geary, become: true }            # 轻量级mail客户端
-    # - { role: gimp, become: true }             # linux版ps
-    # - { role: grub-customizer, become: true }  # grub 图形界面
-    # - { role: hubic, become: true }            # 欧洲云盘
-     #- { role: sysmonito} # 导航栏监控
-    # - { role: ksuperkey, become: true }        # win键可以打开程序
-    # - { role: libreoffice, become: true }      # libreoffice
-    # - { role: maim, become: true }             # 屏幕截图
-    # - { role: min, become: true }              # 浏览器
-    # - { role: mysql-workbench, become: true }  # mysql图形界面
-    # - { role: nautilus-plugins, become: true } # 文件管理器增强
-    # - { role: nemo, become: true }             # Ubuntu 12的文件管理器
-    # - { role: notepadqq, become: true }        # notepadqq编辑器
-    # - { role: notify-osd, become: true }       # 通知osd
-    # - { role: qutebrowser, become: true }      # 类似vim的浏览器
-    # - { role: remarkable, become: true }       # markdown编辑器
-    # - { role: remmina, become: true }          # 远程桌面
-    # - { role: ripgrep, become: true }          # rg 搜索
-    # - { role: rofi, become: true }             # 窗口切换器
-    # - { role: shutter, become: true }          # 截图工具
-    # - { role: sift, become: true }             # 类似grep
-    # - { role: slop, become: true }             # 显示选中区域坐标
-    # - { role: skype, become: true }            # skype聊天
-    # - { role: smartgit, become: true }         # git客户端
-    # - { role: spotify, become: true }          # 音乐客户端
-    # - { role: sublime3, become: true }         # sublime3
-    # - { role: sunflower, become: true }        # 双面板文件管理器
-    # - { role: teamviewer, become: true }       # 远程桌面
-    # - { role: thunderbird, become: true }      # 邮件客户端
-    # - { role: ultra-flat-icons, become: true } # 系统图标
-    # - { role: urxvt-perls }                    # urxvt终端扩展
-    # - { role: vagrant, become: true }          # VirtualBox管理工具
-    # - { role: virtualbox, become: true }       # 虚拟机
-    # - { role: vokoscreen, become: true }       # 屏幕录制软件
-    # - { role: wine, become: true }             # Windows软件环境
-    # - { role: workrave, become: true }         # 健康提醒
-    # - { role: xfce-dockbarx, become: true }    # xfce桌面
-    # bspwm
-    # - { role: sxhkd, become: true }            # x热键守护进程
-    # - { role: bspwm, become: true }            # 窗口管理器
-    # - { role: bspwm-panel, become: true }      # 窗口管理器
-    # - { role: bspwm-environment, become: true }# 窗口管理器
-    # User roles
-    # - { role: gulp}                            # js自动构建
-    # - { role: browsersync }                    # 浏览器同步测试工具
-    # - { role: bower }                          # web包管理
-    # - { role: webpack }                        # web打包器
-    # - { role: clean, become: true }            # 升级并清理系统
-    # - { role: vim}                             # vim
-    # - { role: chrome}                          # chrome
-    # - { role: 32bitlib}                        # 32位兼容库
-    # - { role: arm}                             # ARM工具链
-    # - { role: jlink}                           # jlink
-    # - { role: fonts}                           # powerline字体
-    # - { role: tftp}                            # tftp 服务器
-    # - { role: nfs}                             # nfs 服务器
-    # - { role: samba}                           # samba 服务器
-    # - { role: wps}                             # wps
-    # - { role: wps_fonts}                       # wps 字体
-    # - { role: jianguoyun}                      # 坚果云
-    # - { role: sogoupinyin}                     # 搜狗输入法
-    # - { role: go-for-it}                       # go-for-it
-    # - { role: bcompare}                        # 对比工具
-    # - { role: lantern}                         # 蓝灯
-    # - { role: zerotier}                        # zerotier
-    # - { role: master-pdf-editor}               # pdf编辑器
-    # - { role: thefuck}                         # thefuck
-    # - { role: udev}                            # udev
-    # - { role: xx-net}                          # XX-NET
-    # - { role: solarized}                       # ls颜色
-    # - { role: vscode}                          # vscode
-    # - { role: opengrok}                        # OpenGrok
-    # - { role: pdf2htmlEX}                      # pdf2htmlEX
-    # - { role: progress}                        # cp,mv进度
-    # - { role: GouYong}                         # 屏幕取词翻译
-    # - { role: qemu}                            # qemu
-    # - { role: albert}                          # dash

@@ -2,6 +2,7 @@
 
 - name: Configure the Claws Mail PPA(邮件客户端)
   apt_repository: repo="ppa:claws-mail/ppa" state=present
+  become: true
 
 - name: Install Claws Mail
   apt: pkg="{{ item }}" state=latest
@@ -12,3 +13,4 @@
     - claws-mail-plugins
     - claws-mail-multi-notifier
     - claws-mail-themes
+  become: true

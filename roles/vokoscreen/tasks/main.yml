@@ -2,3 +2,4 @@
 
 - name: Install Vokoscreen screenshot tool(屏幕录制软件)
   apt: name=vokoscreen state=present
+  become: true

@@ -7,3 +7,12 @@
 - name: Install Albert
   apt: name=albert state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
   become: true
+
+- name: Copy Albert startup applications
+  copy:
+    src: "/usr/share/applications/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/autostart/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+  with_items:
+    - albert.desktop

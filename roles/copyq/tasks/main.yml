@@ -13,6 +13,7 @@
 - name: Install CopyQ {{ copyq.version }}
   apt: deb="/tmp/download-copyq-latest.deb"
   when: copyq_check_deb.rc == 1
+  become: true
 
 - name: Clean CopyQ deb file
   file: path=/tmp/download-copyq-latest.deb state=absent

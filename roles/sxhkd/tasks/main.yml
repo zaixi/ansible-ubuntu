@@ -7,6 +7,7 @@
 
 - name: Install build dependencies
   apt: pkg="{{ item }}" state=latest
+  become: true
   with_items:
     - build-essential
     - libxcb-util0-dev
@@ -21,5 +22,6 @@
 
 - name: Make install
   command: make install
+  become: true
   args:
     chdir: "{{ ansible_env.HOME }}/.cache/install/sxhkd"

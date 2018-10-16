@@ -12,6 +12,7 @@
 
 - name: Install hubiC
   apt: deb="/tmp/download-hubic-latest.deb"
+  become: true
   when: hubic_check_deb.rc == 1
 
 - name: Clean hubiC deb file

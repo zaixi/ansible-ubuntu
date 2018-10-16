@@ -2,6 +2,7 @@
 
 - name: Install standard desktop packages
   apt: pkg="{{ item }}" state=latest
+  become: true
   with_items:
     # Audio
     - alsa-base

@@ -2,9 +2,11 @@
 
 - name: Configure the Wine PPA
   apt_repository: repo="ppa:ubuntu-wine/ppa" state=present
+  become: true
 
 - name: Install Wine
   apt: pkg=wine state=latest
+  become: true
 
 - name: Create HeidiSQL desktop file
   template:

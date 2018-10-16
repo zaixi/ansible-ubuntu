@@ -2,12 +2,14 @@
 
 - name: Ensure Unity MediaScanner is removed (useless + cause high CPU peaks)
   apt: pkg={{ item }} purge=yes state=absent
+  become: true
   with_items:
     - mediascanner2.0
     - libmediascanner-2.0-0
 
 - name: Remove Amazon and others Unity shits
   apt: pkg={{ item }} purge=yes state=absent
+  become: true
   with_items:
     - unity-webapps-common
     - unity-lens-shopping
@@ -26,6 +28,7 @@
 
 - name: Remove games
   apt: pkg={{ item }} purge=yes state=absent
+  become: true
   with_items:
     - gnome-sudoku
     - ace-of-penguins
@@ -37,16 +40,17 @@
 
 - name: Ubuntu | Uninstall libre office
   apt: pkg={{item}} purge=yes state=absent
+  become: true
   with_items:
      - libreoffice-core
      - openoffice
 
 - name: Remove shitty Amazon shortcut
   file: path=/usr/share/applications/ubuntu-amazon-default.desktop force=yes state=absent
+  become: true
 
 - name: Disable WebApps and other shitty integrations
   command: "{{ item }}"
-  become: true
   become_user: "{{ ansible_env.USER }}"
   with_items:
     - gsettings set com.canonical.unity.webapps integration-allowed false
@@ -71,6 +75,7 @@
 #   VIDEOS
 - name: Remove XDG directories
   file: path="{{ ansible_env.HOME }}/{{ item }}" force=yes state=absent
+  become: true
   with_items:
     - Documents
     - Modèles

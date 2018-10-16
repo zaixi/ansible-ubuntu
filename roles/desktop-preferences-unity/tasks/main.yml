@@ -5,6 +5,7 @@
 
 - name: Install Unity tweak tool
   apt: pkg=unity-tweak-tool state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
 
 - name: Set global keybindings
   command: "{{ item }}"

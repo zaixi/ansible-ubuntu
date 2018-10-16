@@ -12,6 +12,7 @@
 
 - name: Install MySQL WorkBench
   apt: deb="/tmp/download-mysql-workbench-latest.deb"
+  become: true
   when: mysql_workbench_check_deb.rc == 1
 
 - name: Clean MySQL WorkBench deb file

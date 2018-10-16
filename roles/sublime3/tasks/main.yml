@@ -2,9 +2,11 @@
 
 - name: Add sublime repository(编辑器)
   apt_repository: repo="ppa:webupd8team/sublime-text-3" state=present
+  become: true
 
 - name: Install latest sublime package
   apt: pkg="sublime-text-installer" state=latest update_cache=yes
+  become: true
 
 - name: Prepare sublime directories (1/2)
   file: path="{{ ansible_env.HOME }}/.config/sublime-text-3/Installed Packages" state=directory owner="{{ ansible_env.USER }}" group="{{ ansible_env.USER }}"

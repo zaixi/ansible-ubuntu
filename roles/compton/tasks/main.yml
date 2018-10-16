@@ -3,9 +3,11 @@
 - name: Add repository(窗口合成)
   apt_repository: repo="ppa:richardgv/compton" state=present
   when: ansible_distribution == 'Ubuntu' and (ansible_distribution_version == '14.04' or ansible_distribution_version == '14.10')
+  become: true
 
 - name: Install
   apt: name=compton state=latest update_cache=yes
+  become: true
 
 - name: Ensure that configuration directory exists
   file: path="{{ ansible_env.HOME }}/.config" state=directory

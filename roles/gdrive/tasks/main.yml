@@ -12,6 +12,7 @@
 
 - name: Install GDrive {{ gdrive.version }}
   apt: deb="/tmp/download-gdrive-latest.deb"
+  become: true
   when: gdrive_check_deb.rc == 1
 
 - name: Clean GDrive deb file

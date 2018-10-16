@@ -2,6 +2,7 @@
 
 - name: Install Workrave(健康提醒)
   apt: pkg=workrave state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
 
 - name: Create startup application directory
   file:

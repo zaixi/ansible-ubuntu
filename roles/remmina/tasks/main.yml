@@ -5,6 +5,7 @@
 
 - name: Install Remmina
   apt: pkg="{{ item }}" state=present
+  become: true
   with_items:
     - remmina
     - remmina-plugin-rdp

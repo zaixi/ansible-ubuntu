@@ -2,9 +2,11 @@
 
 - name: Configure the Nemo PPA(Ubuntu 12的文件管理器)
   apt_repository: repo="ppa:webupd8team/nemo" state=present
+  become: true
 
 - name: Install Nemo
   apt: pkg="{{ item }}" state=latest
+  become: true
   with_items:
     - nemo
     - nemo-rabbitvcs

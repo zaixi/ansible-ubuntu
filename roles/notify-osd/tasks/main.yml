@@ -5,9 +5,11 @@
 
 - name: Install NotifyOSD
   apt: pkg=notify-osd state=latest
+  become: true
 
 - name: Kill NotifyOSD process
   shell: pkill notify-osd
+  become: true
   ignore_errors: true
   failed_when: false
   changed_when: false

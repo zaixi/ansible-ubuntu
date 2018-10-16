@@ -2,6 +2,7 @@
 
 - name: Install dependencies(类似vim的浏览器)
   apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
   with_items:
     - python3-lxml
     - python-tox
@@ -24,6 +25,7 @@
 
 - name: Install PyPEG2
   apt: deb="/tmp/download-python3-pypeg2-latest.deb"
+  become: true
   when: python3_pypeg2_check_deb.rc == 1
 
 - name: Clean PyPEG2 deb file
@@ -41,6 +43,7 @@
 
 - name: Install qutebrowser
   apt: deb="/tmp/download-qutebrowser-latest.deb"
+  become: true
   when: qutebrowser_check_deb.rc == 1
 
 - name: Clean qutebrowser deb file

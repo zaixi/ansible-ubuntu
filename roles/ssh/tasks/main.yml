@@ -2,12 +2,16 @@
 
 - name: Install SSH Server
   apt: pkg=openssh-server state=latest cache_valid_time={{ aptcachetime }}
+  become: true
 
 - name: "{{ ssh.password_auth | ternary('Allow','Disallow') }} password authentication"
   lineinfile: dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication {{ ssh.password_auth | ternary('yes','no') }}" state=present
+  become: true
 
 - name: "{{ ssh.root_login | ternary('Allow','Disallow') }} root SSH access"
   lineinfile: dest=/etc/ssh/sshd_config regexp="^PermitRootLogin" line="PermitRootLogin {{ ssh.root_login | ternary('yes','no') }}" state=present
+  become: true
 
 - name: "Ensure SSH is {{ ssh.start | ternary('started','stopped') }}"
   service: name=ssh state={{ ssh.start | ternary('restarted','stopped') }} enabled={{ ssh.service_enabled }}
+  become: true

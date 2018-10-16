@@ -6,10 +6,12 @@
     state: latest
     update_cache: yes
     cache_valid_time: "{{ aptcachetime }}"
+  become: true
 
 - name: Set Chromium as default browser
   command: update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/chromium-browser 250
   when: chromium.set_default == true
+  become: true
 
 # See https://www.chromium.org/administrators/policy-list-3
 - name: Create Chromium policies directory for all users
@@ -17,18 +19,21 @@
     path: /etc/chromium/policies/managed
     state: directory
   when: chromium.policy
+  become: true
 
 - name: Create Chromium JSON policy file to force settings for all users
   copy:
     src: policy.json
     dest: "/etc/chromium/policies/managed/benoth-policy.json"
   when: chromium.policy
+  become: true
 
 - name: Create Chromium extensions directory for all users
   file:
     path: /usr/share/chromium-browser/extensions
     state: directory
   when: chromium.policy
+  become: true
 
 # See https://developer.chrome.com/extensions/external_extensions#preferences
 - name: Create Chromium JSON file to install extensions for all users
@@ -48,3 +53,4 @@
     # - deoaddaobnieaecelinfdllcgdehimih # kimono
     # - fhbjgbiflinjbdggehcddcbncdddomop # postman
   when: chromium.extensions
+  become: true

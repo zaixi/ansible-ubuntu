@@ -12,6 +12,7 @@
 
 - name: Install SunFlower
   apt: deb="/tmp/download-sunflower-latest.deb"
+  become: true
   when: sunflower_check_deb.rc == 1
 
 - name: Clean SunFlower deb file

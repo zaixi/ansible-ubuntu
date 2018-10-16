@@ -2,9 +2,11 @@
 
 - name: Configure the ksuperkey PPA
   apt_repository: repo="ppa:mehanik/ksuperkey" state=present
+  become: true
 
 - name: Install ksuperkey
   apt: pkg=ksuperkey state=latest
+  become: true
 
 - name: Create startup application directory
   file:

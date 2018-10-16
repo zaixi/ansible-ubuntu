@@ -10,6 +10,7 @@
     - gtk2-engines-murrine
     - gnome-themes-standard
     - libgtk-3-dev
+  become: true
 
 - name: Install Arc-Theme
   git: repo=https://github.com/horst3180/arc-theme dest="{{ ansible_env.HOME }}/.cache/arc-theme" update=yes accept_hostkey=yes
@@ -30,6 +31,7 @@
   command: make install
   args:
     chdir: "{{ ansible_env.HOME }}/.cache/arc-theme"
+  become: true
   register: arc_theme_make
   when: arc_theme_git.changed
 

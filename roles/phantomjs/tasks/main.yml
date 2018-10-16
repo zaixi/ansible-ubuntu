@@ -2,6 +2,7 @@
 
 - name: Ensure PhantomJS native package is absent(无界面浏览器)
   apt: name=phantomjs state=absent purge=yes
+  become: true
 
 - name: Install PhantomJS dependencies
   apt: name={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
@@ -11,6 +12,7 @@
     - libssl1.0.0
     - zlib1g
     - lib32z1
+  become: true
 
 - name: Check PhantomJS version
   command: "phantomjs --version"
@@ -25,6 +27,7 @@
   ignore_errors: true
   failed_when: false
   changed_when: false
+  become: true
 
 - name: Download PhantomJS archive
   get_url: url="{{ phantomjs.url }}" dest=/tmp/download-phantomjs.tar.bz2 force=no
@@ -36,10 +39,12 @@
 
 - name: Install PhantomJS
   command: mv /tmp/{{ phantomjs.dir }}/bin/phantomjs /usr/local/bin/phantomjs creates="/usr/local/bin/phantomjs" removes="/tmp/{{ phantomjs.dir }}/bin/phantomjs"
+  become: true
   when: phantomjs_version | failed
 
 - name: Make PhantomJS executable
   file: path=/usr/local/bin/phantomjs mode=0755
+  become: true
   when: phantomjs_version | failed
 
 - name: Cleanup PhantomJS installer
