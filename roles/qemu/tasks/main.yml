@@ -1,0 +1,26 @@
+---
+
+- name: Install qemu depend packages
+  apt: pkg="{{ item }}" state=latest
+  with_items:
+    - uml-utilities
+    - bridge-utils
+  become: true
+
+- name: Install qemu packages
+  apt: pkg="{{ item }}" state=latest
+  with_items:
+    - qemu
+  become: true
+
+- name: change change name to eth0
+  lineinfile:
+    dest: "/etc/default/grub"
+    regexp: "^GRUB_CMDLINE_LINUX.*"
+    line: "GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\""
+    create: "yes"
+  become: true
+
+- name: update grub
+  command: update-grub
+  become: true

@@ -4,10 +4,12 @@
   apt: pkg="vim" purge=yes
   with_items:
     - vim
+  become: true
 
 - name: Add vim repository
   apt_repository: repo="ppa:jonathonf/vim" state=present
+  become: true
 
 - name: Install latest vim package
   apt: pkg="vim" state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-
+  become: true
