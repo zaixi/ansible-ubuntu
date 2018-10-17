@@ -1,7 +1,7 @@
 ---
 
 - name: Add apt keys of spotify
-  apt_key: keyserver=keyserver.ubuntu.com id=BBEBDCB318AD50EC6865090613B00F1FD2C19886
+  apt_key: keyserver=hkp://keyserver.ubuntu.com id=931FF8E79F0876134EDDBDCCA87FF9DF48BF1C90
   become: true
 
 - name: Add repository

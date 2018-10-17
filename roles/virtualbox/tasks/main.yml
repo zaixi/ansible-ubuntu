@@ -9,5 +9,5 @@
   become: true
 
 - name: Install VirtualBox {{ virtualbox.version }}
-  apt: pkg=virtualbox-{{ virtualbox.version }} state=present
+  apt: pkg=virtualbox-{{ virtualbox.version }} state=present allow_unauthenticated=yes
   become: true

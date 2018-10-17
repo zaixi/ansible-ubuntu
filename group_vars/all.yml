@@ -1,7 +1,7 @@
 ---
 
 # http://docs.ansible.com/ansible/playbooks_variables.html#variable-precedence-where-should-i-put-a-variable
-aptcachetime: 120
+aptcachetime: 3600
 chromium:
   set_default: true
   policy: false

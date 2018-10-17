@@ -5,6 +5,7 @@
     update_cache: true
     upgrade: true
     autoremove: true
+  become: true
 
 - name: 删除已卸载软件的配置
   shell:

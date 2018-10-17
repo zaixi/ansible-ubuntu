@@ -9,6 +9,7 @@
     - automake
     - gtk2-engines-murrine
     - gnome-themes-standard
+    - libglib2.0-dev
   become: true
 
 - name: Install Adapta-Theme
