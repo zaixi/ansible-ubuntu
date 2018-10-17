@@ -1,5 +1,9 @@
 ---
 
+- name: show package info
+  debug:
+    msg: "{{ package }}"
+
 - name: Check if {{ package.name }} is installed
   command: dpkg-query -W {{ package.name }}
   register: package_deb_check

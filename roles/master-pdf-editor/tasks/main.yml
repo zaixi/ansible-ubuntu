@@ -1,0 +1,5 @@
+---
+
+- name: Run deb_install role
+  import_tasks:
+    roles/deb_install/tasks/main.yml
