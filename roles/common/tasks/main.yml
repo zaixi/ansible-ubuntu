@@ -82,6 +82,7 @@
     - cifs-utils
     - pdftohtml
     - tmux
+    - silversearcher-ag
 
 - name: Upgrade installed packages
   apt: upgrade=yes
