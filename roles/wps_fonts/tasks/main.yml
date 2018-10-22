@@ -1,5 +1,12 @@
 ---
 
-- name: Run deb_install role
-  import_tasks:
-    roles/deb_install/tasks/main.yml
+- name: Clone wps dependencies fonts
+  git: repo=https://github.com/zaixi/ttf-wps-fonts dest="/tmp/wps-fonts" update=yes accept_hostkey=yes depth=1
+  register: fonts_git
+  become: true
+
+- name: Install fonts
+  command: ./install.sh
+  args:
+    chdir: "/tmp/wps-fonts"
+  become: true

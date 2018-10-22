@@ -1,5 +1,19 @@
 ---
 
-- name: Run deb_install role
-  import_tasks:
-    roles/deb_install/tasks/main.yml
+- name: Add deb repository
+  apt_repository: repo="deb http://archive.ubuntukylin.com:10006/ubuntukylin {{ ansible_distribution_release }} main" state=present
+  become: true
+
+- name: Install wps-office
+  apt:
+    name:  wps-office
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  become: true
+
+#- name: Run deb_install role
+  #import_tasks:
+    #roles/deb_install/tasks/main.yml
+  #vars:
+    #package: "{{ package_list[role_name] }}"
