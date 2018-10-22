@@ -4,6 +4,7 @@
   hosts: localhost
   roles:
 # Common roles
+    # - { role: debug}                     # 调试
     # - { role: hosts}                     # hosts 文件修改
     # - { role: locales}                   # 配置语言和时区
     # - { role: common}                    # 安装通用软件,需要看看哪些需要安装
@@ -80,7 +81,7 @@
     # - { role: browsersync }              # 浏览器同步测试工具
     # - { role: bower }                    # web包管理
     # - { role: webpack }                  # web打包器
-    # - { role: clean, become: true }      # 升级并清理系统
+    # - { role: clean}                     # 升级并清理系统
     # - { role: vim}                       # vim
     # - { role: chrome}                    # chrome
     # - { role: 32bitlib}                  # 32位兼容库

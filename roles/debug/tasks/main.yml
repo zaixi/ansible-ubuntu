@@ -1,0 +1,28 @@
+---
+
+- name: Show user
+  debug:
+    msg: "auth {{ ansible_env.USER }}"
+
+- name: Show password
+  debug:
+    msg: "password >>{{ ansible_become_pass }}<<"
+
+- name: date
+  shell:
+    date
+  register: result
+
+- name: ls
+  shell:
+    ls
+  become: true
+
+- name: Show debug info
+  debug:
+    var=result
+
+- name: 软件源更新
+  apt:
+    update_cache: true
+  become: true
