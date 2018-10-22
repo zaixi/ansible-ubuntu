@@ -1,28 +1,19 @@
 ---
 
-- name: Check if TeamViewer is installed(远程软件)
-  command: dpkg-query -W teamviewer
-  register: teamviewer_check_deb
-  failed_when: teamviewer_check_deb.rc > 1
-  changed_when: teamviewer_check_deb.rc == 1
-
-- name: Install TeamViewer dependencies
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+- name: Add deb repository
+  apt_repository: repo="deb http://archive.ubuntukylin.com:10006/ubuntukylin {{ ansible_distribution_release }} main" state=present
   become: true
-  with_items:
-    - libjpeg62
-    - libxinerama1
-    - libxrandr2
-    - libxtst6
 
-- name: Download TeamViewer
-  get_url: url="http://download.teamviewer.com/download/teamviewer_i386.deb" dest="/tmp/download-teamviewer-latest.deb"
-  when: teamviewer_check_deb.rc == 1
-
-- name: Install TeamViewer
-  apt: deb="/tmp/download-teamviewer-latest.deb"
+- name: Install TeamViewer(远程软件)
+  apt:
+    name:  teamviewer
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
   become: true
-  when: teamviewer_check_deb.rc == 1
 
-- name: Clean TeamViewer deb file
-  file: path=/tmp/download-teamviewer-latest.deb state=absent
+#- name: Run deb_install role
+  #import_tasks:
+    #roles/deb_install/tasks/main.yml
+  #vars:
+    #package: "{{ package_list[role_name] }}"
