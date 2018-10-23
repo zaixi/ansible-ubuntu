@@ -1,5 +1,9 @@
 ---
 
+- name: Installing apt-key
+  apt_key: keyserver=keyserver.ubuntu.com id=D259B7555E1D3C58
+  become: true
+
 - name: Add deb repository
   apt_repository: repo="deb http://archive.ubuntukylin.com:10006/ubuntukylin {{ ansible_distribution_release }} main" state=present
   become: true

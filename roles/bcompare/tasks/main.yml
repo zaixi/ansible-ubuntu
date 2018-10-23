@@ -1,5 +1,9 @@
 ---
 
+- name: Installing apt-key
+  apt_key: keyserver=keyserver.ubuntu.com id=331D6DDE7F8840CE
+  become: true
+
 - name: Add deb repository
   apt_repository: repo='deb http://www.scootersoftware.com/ bcompare4 non-free' state=present filename=scootersoftware
   become: true
