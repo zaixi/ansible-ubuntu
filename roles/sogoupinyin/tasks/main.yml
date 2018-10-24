@@ -3,6 +3,8 @@
 - name: Run deb_install role
   import_tasks:
     roles/deb_install/tasks/main.yml
+  vars:
+    package: "{{ package_list[role_name] }}"
 
 - name: delete sogoupinyin deb repository
   apt_repository: repo="deb http://archive.ubuntukylin.com:10006/ubuntukylin {{ ansible_distribution_release }} main" state=absent filename=sogoupinyin

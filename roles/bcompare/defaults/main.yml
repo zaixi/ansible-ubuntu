@@ -1,7 +1,5 @@
 ---
 
-package: "{{ package_list[role_name] }}"
-
 bcompare:
   hack: true
   path: "/usr/lib/beyondcompare"

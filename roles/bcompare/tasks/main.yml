@@ -19,6 +19,8 @@
 #- name: Run deb_install role
   #import_tasks:
     #roles/deb_install/tasks/main.yml
+  #vars:
+    #package: "{{ package_list[role_name] }}"
 
 - name: Ensure bcompare config directory exists
   file:
