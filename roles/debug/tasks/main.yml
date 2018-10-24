@@ -4,9 +4,9 @@
   debug:
     msg: "auth {{ ansible_env.USER }}"
 
-- name: Show password
-  debug:
-    msg: "password >>{{ ansible_become_pass }}<<"
+#- name: Show password
+  #debug:
+    #msg: "password >>{{ ansible_become_pass }}<<"
 
 - name: date
   shell:
@@ -21,6 +21,16 @@
 - name: Show debug info
   debug:
     var=result
+
+- name: Install common packages
+  apt: name={{ packages }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
+  vars:
+    packages:
+    - afuse
+    - aptitude
+    - axel
+    - build-essential
 
 - name: 软件源更新
   apt:
