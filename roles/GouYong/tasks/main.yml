@@ -17,3 +17,12 @@
     #executable: pip3
     #state: present
   #become: true
+
+- name: Copy GouYong startup applications
+  copy:
+    src: "/usr/share/applications/{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.config/autostart/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+  with_items:
+    - GouYong.desktop
