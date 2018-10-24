@@ -1,8 +1,9 @@
 ---
 
 - name: Install Python packages depend
-  apt: pkg={{ item }} state=latest
-  with_items:
+  apt: pkg="{{ packages }}" state=latest
+  vars:
+    packages:
     - python-gobject
     - libcairo2-dev
     - gir1.2-gdl-3

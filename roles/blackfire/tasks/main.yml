@@ -6,8 +6,9 @@
   apt_repository: repo='deb http://packages.blackfire.io/debian any main' state=present update_cache=yes
 
 - name: Install Blackfire.io
-  apt: pkg={{ item }} state=present
-  with_items:
+  apt: pkg={{ packages }} state=present
+  vars:
+    packages:
     - blackfire-agent
     - blackfire-php
 

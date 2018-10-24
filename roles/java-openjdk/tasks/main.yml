@@ -1,8 +1,9 @@
 ---
 
 - name: Install Default OpenJDK
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
   become: true
-  with_items:
+  vars:
+    packages:
     - default-jdk
     - default-jre-headless

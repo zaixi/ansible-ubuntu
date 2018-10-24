@@ -1,8 +1,9 @@
 ---
 
 - name: Install 32bit compatible lib
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  vars:
+    packages:
     - lib32ncurses5
     - lib32z1
     - libtcl8.5:i386

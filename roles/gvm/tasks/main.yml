@@ -1,8 +1,10 @@
 ---
 
 - name: Install GVM dependencies(go 版本管理)
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  become: true
+  vars:
+    packages:
     - curl
     - git
     - mercurial

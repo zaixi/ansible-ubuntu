@@ -14,11 +14,12 @@
 
 - name: Install
   apt:
-    pkg: "{{ item }}"
+    pkg: "{{ packages }}"
     state: latest
     cache_valid_time: "{{ aptcachetime }}"
     update_cache: yes
-  with_items:
+  vars:
+    packages:
     - linux-image-extra-virtual
     - docker-ce
     - docker-compose

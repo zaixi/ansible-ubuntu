@@ -1,8 +1,9 @@
 ---
 
 - name: Install MySQL
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  vars:
+    packages:
     - mysql-server-5.7
     - mysql-client-5.7
     - python-mysqldb

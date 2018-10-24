@@ -2,8 +2,9 @@
 # See https://github.com/XX-net/XX-Net
 
 - name: Install XX-Net dependencies
-  apt: pkg={{ item }} state=latest
-  with_items:
+  apt: pkg={{ packages }} state=latest
+  vars:
+    packages:
     - libnss3-tools
     - python-gtk2
     - libffi-dev

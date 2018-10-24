@@ -1,8 +1,9 @@
 ---
 
 - name: Install Python packages depend
-  apt: pkg={{ item }} state=latest
-  with_items:
+  apt: pkg={{ packages }} state=latest
+  vars:
+    packages:
     - python-psutil
     - python3-psutil
   become: true

@@ -1,15 +1,17 @@
 ---
 
 - name: Install qemu depend packages
-  apt: pkg="{{ item }}" state=latest
-  with_items:
+  apt: pkg="{{ packages }}" state=latest
+  vars:
+    packages:
     - uml-utilities
     - bridge-utils
   become: true
 
 - name: Install qemu packages
-  apt: pkg="{{ item }}" state=latest
-  with_items:
+  apt: pkg="{{ packages }}" state=latest
+  vars:
+    packages:
     - qemu
   become: true
 

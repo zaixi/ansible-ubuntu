@@ -7,9 +7,10 @@
   git: repo=https://github.com/DaveDavenport/rofi.git dest="{{ ansible_env.HOME }}/.cache/install/rofi" update=yes accept_hostkey=yes
 
 - name: Install build dependencies
-  apt: pkg="{{ item }}" state=latest
+  apt: pkg="{{ packages }}" state=latest
   become: true
-  with_items:
+  vars:
+    packages:
     - build-essential
     - autoconf
     - automake

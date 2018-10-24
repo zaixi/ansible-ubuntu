@@ -5,9 +5,10 @@
   become: true
 
 - name: Install Nemo
-  apt: pkg="{{ item }}" state=latest
+  apt: pkg="{{ packages }}" state=latest
   become: true
-  with_items:
+  vars:
+    packages:
     - nemo
     - nemo-rabbitvcs
 

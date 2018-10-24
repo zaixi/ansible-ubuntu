@@ -5,8 +5,9 @@
   become: true
 
 - name: Install Claws Mail
-  apt: pkg="{{ item }}" state=latest
-  with_items:
+  apt: pkg="{{ packages }}" state=latest
+  vars:
+    packages:
     - claws-mail
     - claws-mail-i18n
     - claws-mail-extra-plugins

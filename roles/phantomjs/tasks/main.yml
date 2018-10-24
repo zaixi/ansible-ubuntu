@@ -5,8 +5,9 @@
   become: true
 
 - name: Install PhantomJS dependencies
-  apt: name={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
-  with_items:
+  apt: name={{ package }} state=latest cache_valid_time={{ aptcachetime }}
+  vars:
+    packages:
     - fontconfig
     - libfontconfig1
     - libssl1.0.0

@@ -1,9 +1,10 @@
 ---
 
 - name: Install progress(cp mv dd ...进度显示)
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ packages }} state=latest
   become: true
-  with_items:
+  vars:
+    packages:
     - libncurses5-dev
     - libappindicator1
     - libindicator7
@@ -14,9 +15,10 @@
   #register: progress_git
 
 #- name: Install depend
-  #apt: pkg={{ item }} state=latest
+  #apt: pkg={{ packages }} state=latest
   #become: true
-  #with_items:
+  #vars:
+    #packages:
     #- libncurses5-dev
 
 #- name: Make progress

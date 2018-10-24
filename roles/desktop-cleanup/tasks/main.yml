@@ -1,16 +1,18 @@
 ---
 
 - name: Ensure Unity MediaScanner is removed (useless + cause high CPU peaks)
-  apt: pkg={{ item }} purge=yes state=absent
+  apt: pkg={{ packages }} purge=yes state=absent
   become: true
-  with_items:
+  vars:
+    packages:
     - mediascanner2.0
     - libmediascanner-2.0-0
 
 - name: Remove Amazon and others Unity shits
-  apt: pkg={{ item }} purge=yes state=absent
+  apt: pkg={{ packages }} purge=yes state=absent
   become: true
-  with_items:
+  vars:
+    packages:
     - unity-webapps-common
     - unity-lens-shopping
     - unity-scope-video-remote
@@ -27,9 +29,10 @@
     - unity-scope-yahoostock
 
 - name: Remove games
-  apt: pkg={{ item }} purge=yes state=absent
+  apt: pkg={{ packages }} purge=yes state=absent
   become: true
-  with_items:
+  vars:
+    packages:
     - gnome-sudoku
     - ace-of-penguins
     - gnomine
@@ -39,9 +42,10 @@
     - aisleriot
 
 - name: Ubuntu | Uninstall libre office
-  apt: pkg={{item}} purge=yes state=absent
+  apt: pkg={{packages}} purge=yes state=absent
   become: true
-  with_items:
+  vars:
+    packages:
      - libreoffice-core
      - openoffice
 

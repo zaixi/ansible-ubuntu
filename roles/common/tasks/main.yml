@@ -19,9 +19,10 @@
   become: true
 
 - name: Install common packages
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: name={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
   become: true
-  with_items:
+  vars:
+    packages:
     - afuse
     - aptitude
     - axel

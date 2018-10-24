@@ -7,8 +7,9 @@
   apt_repository: repo='deb http://dl.hhvm.com/ubuntu {{ ansible_distribution_release }} main' state=present
 
 - name: Install HHVM packages
-  apt: pkg={{ item }} state=latest update_cache=yes
-  with_items:
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  vars:
+    packages:
       - hhvm
       - libgmp-dev
       - libmemcached-dev

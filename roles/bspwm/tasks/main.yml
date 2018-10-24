@@ -6,9 +6,10 @@
   become_user: "{{ ansible_env.USER }}"
 
 - name: Install build dependencies
-  apt: pkg="{{ item }}" state=latest
+  apt: pkg="{{ packages }}" state=latest
   become: true
-  with_items:
+  vars:
+    packages:
     - build-essential
     - libxcb-xinerama0-dev
     - libxcb-icccm4-dev
@@ -16,9 +17,10 @@
     - libxcb-ewmh-dev
 
 - name: Install dependencies
-  apt: pkg="{{ item }}" state=latest
+  apt: pkg="{{ packages }}" state=latest
   become: true
-  with_items:
+  vars:
+    packages:
     - xinit
     - x11-utils
     - x11-xserver-utils

@@ -1,9 +1,10 @@
 ---
 
 - name: Install common desktop packages
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
   become: true
-  with_items:
+  vars:
+    packages:
     - bleachbit      # 系统垃圾清理
     - easytag        # 音频文件元数据管理
     - byzanz         # 屏幕录制(gif)
@@ -16,7 +17,7 @@
     - pinta          # 图片编辑器
     - rhythmbox      # 音乐播放器
     - sox            # 音频瑞士军刀
-    - tilda          # 下拉式终端
+    #- tilda          # 下拉式终端
     - ubuntu-restricted-extras #MP3,Microsoft字体,Flash插件,LAME和DVD播放
     - unetbootin     # 创建U盘启动盘
     - vlc            # 多媒体播放器
@@ -27,9 +28,10 @@
     - pdftohtml      # pdf转html
 
 - name: Install common desktop packages if Ubuntu 16.04
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
   become: true
-  with_items:
+  vars:
+    packages:
     - fonts-hack-ttf
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 

@@ -1,9 +1,10 @@
 ---
 
 - name: Install dependencies(类似vim的浏览器)
-  apt: pkg={{ item }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
   become: true
-  with_items:
+  vars:
+    packages:
     - python3-lxml
     - python-tox
     - python3-pyqt5

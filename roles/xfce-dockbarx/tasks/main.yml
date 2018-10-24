@@ -7,8 +7,9 @@
 # xfce4-panel --quit ; pkill xfconfd ; xfce4-panel &
 # xfce4-panel --restart
 - name: Install DockbarX XFCE plugin
-  apt: pkg={{ item }} state=latest
+  apt: pkg={{ packages }} state=latest
   become: true
-  with_items:
+  vars:
+    packages:
     - xfce4-dockbarx-plugin
     - dockbarx-themes-extra

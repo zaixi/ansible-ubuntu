@@ -1,8 +1,9 @@
 ---
 
 - name: Install Python packages
-  apt: pkg={{ item }} state=latest
-  with_items:
+  apt: pkg={{ packages }} state=latest
+  vars:
+    packages:
     - python
     - python-dev
     - python-pip
