@@ -23,7 +23,7 @@
     var=result
 
 - name: Install common packages
-  apt: name={{ packages }} state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  apt: name={{ packages }} state=latest
   become: true
   vars:
     packages:
@@ -32,7 +32,25 @@
     - axel
     - build-essential
 
-- name: 软件源更新
-  apt:
-    update_cache: true
-  become: true
+#- name: 软件源更新
+  #apt:
+    #update_cache: true
+  #become: true
+
+- name: simulate long running op (15 sec), wait for up to 45 sec, poll every 5 sec
+  command: /bin/sleep 20
+  async: 10
+
+#- name: simulate long running op (15 sec), wait for up to 45 sec, poll every 5 sec
+  #command: /bin/sleep 28
+  #async: 45
+  #poll: 0
+  #register: sleeper
+
+#- name: 'sleep - check on async task'
+  #async_status:
+    #jid: "{{ sleeper.ansible_job_id }}"
+  #register: job_result
+  #until: job_result.finished
+  #retries: 3
+  #delay: 10

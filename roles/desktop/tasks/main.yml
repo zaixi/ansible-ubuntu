@@ -2,6 +2,7 @@
 
 - name: Install common desktop packages
   apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  async: 1800
   become: true
   vars:
     packages:
@@ -26,6 +27,7 @@
     - xdotool        # linux按键精灵
     - gparted        # 磁盘管理工具
     - pdftohtml      # pdf转html
+    - gnome-tweak-tool
 
 - name: Install common desktop packages if Ubuntu 16.04
   apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}

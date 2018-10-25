@@ -1,0 +1,19 @@
+---
+
+- name: Add Numix repository
+  apt_repository:
+    repo: "ppa:numix/ppa"
+    state: present
+  become: true
+
+- name: Install Numix
+  apt:
+    name: "{{ packages }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  become: true
+  vars:
+    packages:
+    - numix-gtk-theme
+    - numix-icon-theme-circle

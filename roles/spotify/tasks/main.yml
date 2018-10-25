@@ -10,4 +10,5 @@
 
 - name: Install spotify
   apt: name=spotify-client update_cache=yes state=latest
+  async: 1800
   become: true

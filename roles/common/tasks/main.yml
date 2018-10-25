@@ -20,6 +20,7 @@
 
 - name: Install common packages
   apt: name={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  async: 1800
   become: true
   vars:
     packages:
@@ -87,4 +88,5 @@
 
 - name: Upgrade installed packages
   apt: upgrade=yes
+  async: 1800
   become: true

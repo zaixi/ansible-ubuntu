@@ -1,0 +1,15 @@
+---
+
+- name: Add papirus-icon-theme repository
+  apt_repository:
+    repo: "ppa:papirus/papirus"
+    state: present
+  become: true
+
+- name: Install papirus-icon-theme
+  apt:
+    name: "papirus-icon-theme"
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  become: true

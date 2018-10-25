@@ -20,10 +20,12 @@
     # - { role: desktop}                   # 安装软件,禁用guest账户
     # - { role: desktop-cleanup}           # 删除亚马逊图标等
     # - { role: desktop-autostart}         # 添加删除自启动
-    # - { role: desktop-preferences-unity} # 界面设置，快捷键设置
+     - { role: desktop-preferences-unity} # 界面设置，快捷键设置
     # - { role: adapta-theme}              # 界面主题
     # - { role: altyo}                     # 下拉终端
     # - { role: arc-theme}                 # 界面主题
+    # - { role: papirus-icon-theme}        # 界面主题
+    # - { role: numix-icon-theme}          # 界面主题
     # - { role: atom}                      # atom
     # - { role: chromium}                  # chromium浏览器,chrome未安装
     # - { role: claws-mail}                # 邮件客户端
