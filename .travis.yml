@@ -1,0 +1,24 @@
+matrix:
+  include:
+  #Ubuntu
+  - name: Ubuntu 16
+    os: linux
+    dist: xenial
+    sudo: required
+    group: stable
+
+before_script:
+  - whoami
+  - cat /etc/issue
+  - sudo apt-get update
+  #- sudo apt-get upgrade
+  - sudo apt-get install x-window-system-core
+  - sudo apt-get install ubuntu-desktop
+  - sudo apt-get install "unity-webapps*"
+  - sudo apt-get install "unity-lens*"
+  - sudo apt-get install "desktop*"
+  - sudo apt-get install "interface*"
+  - mkdir ~/.local/share/applications
+
+script:
+  - ./install.sh master ci

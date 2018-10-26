@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    #machine: true
+    docker:
+      - image: ubuntu:16.04
+    steps:
+      - checkout
+      - run:
+          name: name
+          command: cat /etc/issue
+      - run:
+          name: Greeting
+          command: whoami
+      - run:
+          name: Install 0
+          command: mkdir ~/.local/share/applications
+      - run:
+          name: Install 1
+          command: apt-get update
+      - run:
+          name: Install 2
+          command: apt-get install -y x-window-system-core ubuntu-desktop "unity-webapps*" sudo
+      - run:
+          name: Install 3
+          command: ./install.sh master ci

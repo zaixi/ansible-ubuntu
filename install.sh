@@ -63,6 +63,7 @@ install_while(){
 	done
 }
 
+install_ansible
 case $1 in
 	"all")
 		playbook="ansible-desktop-all.yml"
@@ -76,6 +77,16 @@ case $1 in
 		;;
 esac
 
-get_password
-install_ansible
+case $2 in
+	"ci")
+		echo $2
+		#sudo apt-get -y purge "mysql*"
+		#sudo rm -rf /etc/mysql/ /var/lib/mysql
+		sudo apt autoremove
+		sudo apt autoreclean
+		;;
+	*)
+		get_password
+		;;
+esac
 install_while "$playbook" "$password"

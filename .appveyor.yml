@@ -1,0 +1,30 @@
+image:
+  - Ubuntu1804
+  - Ubuntu
+
+install:
+  - whoami
+  - cat /etc/issue
+  - sudo apt-get update
+  #- sudo apt-get upgrade
+  - sudo apt-get install -y x-window-system-core
+  - sudo apt-get install -y ubuntu-desktop
+  - sudo apt-get install -y "unity-webapps*"
+  - mkdir ~/.local/share/applications
+
+for:
+  -
+    matrix:
+      only:
+        - image: Ubuntu
+    install:
+      - sudo apt-get -y purge "mysql*"
+      - sudo rm -rf /etc/mysql/ /var/lib/mysql
+
+test_script:
+  - ./install.sh master ci
+  #- sudo apt-get update
+  #- sudo apt-get upgrade
+
+build: off
+
