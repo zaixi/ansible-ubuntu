@@ -113,6 +113,7 @@
     # - { role: GouYong}                   # 屏幕取词翻译
     # - { role: qemu}                      # qemu
     # - { role: albert}                    # dash
+    # - { role: fzf}                       # fzf
     #
     #
     # - { role: apache2}

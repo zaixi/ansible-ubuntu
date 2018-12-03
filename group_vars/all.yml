@@ -8,7 +8,7 @@ chromium:
   extensions: false
 desktop_autostart:
   add:
-    - { name: Tilda , exec: /usr/bin/tilda }
+    - { name: terminal, exec: gnome-terminal --maximize }
   remove:
     - deja-dup-monitor.desktop
     - onboard-autostart.desktop

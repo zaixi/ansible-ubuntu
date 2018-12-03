@@ -1,6 +1,6 @@
 image:
-  - Ubuntu1804
   - Ubuntu
+  #- Ubuntu1804
 
 install:
   - whoami

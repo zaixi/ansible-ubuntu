@@ -1,0 +1,15 @@
+---
+
+- name: Create fzf directory
+  file: path="{{ ansible_env.HOME }}/.fzf" state=directory
+  register: projects_directory_create
+
+- name: Clone fzf repository
+  git: repo=https://github.com/junegunn/fzf.git dest="{{ ansible_env.HOME }}/.fzf" update=yes accept_hostkey=yes depth=1
+  when: projects_directory_create.changed
+
+- name: Install fzf
+  shell: ./install
+  args:
+    chdir: "{{ ansible_env.HOME }}/.fzf"
+  when: projects_directory_create.changed

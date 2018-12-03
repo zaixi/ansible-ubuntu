@@ -48,3 +48,7 @@
 - name: Disable guest session in lightdm
   copy: src="50-no-guest.conf" dest="/etc/lightdm/lightdm.conf.d/50-no-guest.conf" force=no
   become: true
+
+- name: Disable apport
+  lineinfile: dest=/etc/default/apport regexp="^enabled=1$" line="enabled=0" state=present
+  become: true
