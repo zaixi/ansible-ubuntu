@@ -22,6 +22,12 @@
   #vars:
     #package: "{{ package_list[role_name] }}"
 
+- name: remove user directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/bcompare"
+    state: absent
+  when: bcompare.hack
+
 - name: Ensure bcompare config directory exists
   file:
     name: "{{ bcompare.path }}"

@@ -8,8 +8,24 @@
     - lib32z1
     - libtcl8.5:i386
     - lib32stdc++6
-    - libreadline6:i386
+    - libreadline-dev:i386
     - libexpat1:i386
     - libssl1.0.0:i386
   become: true
   when: ansible_machine == 'x86_64'
+
+- name: Install 32bit compatible lib if Ubuntu 16.04
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  become: true
+  vars:
+    packages:
+    - libreadline6:i386
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
+
+- name: Install 32bit compatible lib if Ubuntu 18.04
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  become: true
+  vars:
+    packages:
+    - libreadline7:i386
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'

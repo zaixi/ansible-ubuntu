@@ -1,8 +1,9 @@
 image:
-  - Ubuntu
-  #- Ubuntu1804
+  #- Ubuntu
+  - Ubuntu1804
 
 install:
+  - date
   - whoami
   - cat /etc/issue
   - sudo apt-get update
@@ -16,7 +17,7 @@ for:
   -
     matrix:
       only:
-        - image: Ubuntu
+        - image: Ubuntu1804
     install:
       - sudo apt-get -y purge "mysql*"
       - sudo rm -rf /etc/mysql/ /var/lib/mysql

@@ -20,7 +20,6 @@
     - sox            # 音频瑞士军刀
     #- tilda          # 下拉式终端
     - ubuntu-restricted-extras #MP3,Microsoft字体,Flash插件,LAME和DVD播放
-    - unetbootin     # 创建U盘启动盘
     - vlc            # 多媒体播放器
     - wmctrl         # 窗口管理
     - xclip          # 命令行操作剪贴板
@@ -28,6 +27,7 @@
     - gparted        # 磁盘管理工具
     - pdftohtml      # pdf转html
     - gnome-tweak-tool
+    - gnome-todo
 
 - name: Install common desktop packages if Ubuntu 16.04
   apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
@@ -35,6 +35,7 @@
   vars:
     packages:
     - fonts-hack-ttf
+    - unetbootin     # 创建U盘启动盘
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Block Ubuntu product search in system host file

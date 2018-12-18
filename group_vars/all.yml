@@ -40,7 +40,7 @@ package_list:
     url: "https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb"
   wps:
     name: "wps-office"
-    url: "http://kdl.cc.ksosoft.com/wps-community/download/6634/wps-office_10.1.0.6634_amd64.deb"
+    url: "http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office_10.1.0.6757_amd64.deb"
   wps_fonts:
     name: "wps-office-fonts"
     url: "http://kdl.cc.ksosoft.com/wps-community/download/fonts/wps-office-fonts_1.0_all.deb"
@@ -59,4 +59,4 @@ package_list:
     url: "https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb"
   master-pdf-editor:
     name: "master-pdf-editor"
-    url: "https://code-industry.net/public/master-pdf-editor-5.1.12_qt5.amd64.deb"
+    url: "https://code-industry.net/public/master-pdf-editor-5.2.20_qt5.amd64.deb"

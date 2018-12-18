@@ -61,6 +61,7 @@
     - gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"
     - gsettings set com.canonical.unity.webapps preauthorized-domains "[]"
     - gsettings set com.canonical.Unity.ApplicationsLens display-available-apps false
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Remove exemples shortcut
   file: path="{{ ansible_env.HOME }}/examples.desktop" force=yes state=absent

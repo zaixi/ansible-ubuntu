@@ -1,8 +1,25 @@
 ---
 
+- name: get public_key
+  get_url:
+    url: https://build.opensuse.org/projects/home:manuelschneid3r/public_key
+    dest: /tmp/albert_gpg
+    headers:
+      Accept: '*/*'
+
+- name: Installing apt-key
+  apt_key: file="/tmp/albert_gpg" state=present
+  become: true
+
+- name: Add deb repository
+  apt_repository: repo='deb http://download.opensuse.org/repositories/home:/manuelschneid3r/Ubuntu_{{ ansible_distribution_version }}/ /' state=present filename=albert.list
+  become: true
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version > '16.04'
+
 - name: Add Albert repository
   apt_repository: repo="ppa:nilarimogard/webupd8" state=present
   become: true
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'
 
 - name: Install Albert
   apt: name=albert state=latest update_cache=yes cache_valid_time={{ aptcachetime }}

@@ -61,7 +61,7 @@
     - gsettings set org.gnome.desktop.session idle-delay "uint32 3600"
     - gsettings set org.gnome.settings-daemon.plugins.xsettings hinting 'medium'
     - gsettings set org.gnome.settings-daemon.plugins.xsettings antialiasing 'grayscale'
-    - gsettings set com.canonical.desktop.interface scrollbar-mode 'normal'
+    #- gsettings set com.canonical.desktop.interface scrollbar-mode 'normal'
     - gsettings set com.canonical.Unity.Launcher favorites "['application://nemo.desktop', 'application://chromium-browser.desktop', 'application://sublime-text.desktop', 'application://atom.desktop', 'application://gnome-terminal.desktop', 'application://thunderbird.desktop', 'application://filezilla.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices', 'unity://desktop-icon']"
 
 - name: Set workspaces preferences
@@ -75,8 +75,8 @@
   command: "{{ item }}"
   with_items:
     - gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
-    - gsettings set org.gnome.nautilus.icon-view default-zoom-level 'smaller'
-    - gsettings set org.gnome.nautilus.list-view default-zoom-level 'smaller'
+    - gsettings set org.gnome.nautilus.icon-view default-zoom-level 'small'
+    - gsettings set org.gnome.nautilus.list-view default-zoom-level 'small'
     - gsettings set org.gnome.nautilus.list-view use-tree-view true
     - gsettings set org.gnome.nautilus.preferences thumbnail-limit "uint64 5242880"
     - gsettings set org.gnome.nautilus.icon-view thumbnail-size 64
@@ -119,7 +119,7 @@
   with_items:
     - gsettings set org.gnome.Terminal.Legacy.Settings new-terminal-mode 'tab'
     - gsettings set org.gnome.Terminal.Legacy.Settings tab-position 'top'
-    - gsettings set org.gnome.Terminal.Legacy.Settings encodings "['UTF-8']"
+    #- gsettings set org.gnome.Terminal.Legacy.Settings encodings "['UTF-8']"
     - gsettings set org.gnome.Terminal.Legacy.Settings shortcuts-enabled true
     - gsettings set org.gnome.Terminal.Legacy.Settings tab-policy 'automatic'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-window '<Ctrl><Shift>n'
@@ -144,7 +144,7 @@
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ help 'disabled'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ move-tab-left '<Ctrl><Shift>Page_Up'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ move-tab-right '<Ctrl><Shift>Page_Down'
-    - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-profile 'disabled'
+      #- gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ new-profile 'disabled'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ save-contents 'disabled'
     - gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ toggle-menubar 'disabled'
 

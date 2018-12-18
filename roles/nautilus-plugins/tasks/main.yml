@@ -7,7 +7,6 @@
     packages:
     - nautilus-compare
     - nautilus-image-converter
-    - nautilus-image-manipulator
     - nautilus-wipe
 
 - name: Install Nautilus additional packages for Ubuntu 14.04
@@ -17,3 +16,11 @@
     packages:
     - nautilus-open-terminal
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '14.04'
+
+- name: Install Nautilus additional packages for Ubuntu 16.04
+  apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
+  become: true
+  vars:
+    packages:
+    - nautilus-image-manipulator
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '16.04'

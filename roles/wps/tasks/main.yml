@@ -16,6 +16,18 @@
     cache_valid_time: "{{ aptcachetime }}"
   become: true
 
+- name: Install wps-office depend
+  apt:
+    name:  libcanberra-gtk-module
+    state: latest
+    update_cache: yes
+    cache_valid_time: "{{ aptcachetime }}"
+  become: true
+
+#- name: Install wps-office
+  #command: snap install wps-office
+  #become: true
+
 #- name: Run deb_install role
   #import_tasks:
     #roles/deb_install/tasks/main.yml

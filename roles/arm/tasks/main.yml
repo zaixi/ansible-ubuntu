@@ -4,7 +4,6 @@
   apt: pkg={{ packages }} state=latest cache_valid_time={{ aptcachetime }}
   vars:
     packages:
-    - gdb-arm-none-eabi
     - gcc-arm-none-eabi
     - gcc-arm-linux-gnueabihf
     - gdb-multiarch
