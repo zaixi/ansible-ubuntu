@@ -22,36 +22,3 @@
   #vars:
     #package: "{{ package_list[role_name] }}"
 
-- name: remove user directory
-  file:
-    path: "{{ ansible_env.HOME }}/.config/bcompare"
-    state: absent
-  when: bcompare.hack
-
-- name: Ensure bcompare config directory exists
-  file:
-    name: "{{ bcompare.path }}"
-    state: directory
-  become: true
-  when: bcompare.hack
-
-- name: Ensure bcompare config file exists
-  file:
-    name: "{{ bcompare.path }}/{{ bcompare.config_file }}"
-    state: file
-  become: true
-  when: bcompare.hack
-
-- name: Hack bcompare
-  command:
-    sed -i "{{ bcompare.key }}" "{{ bcompare.config_file }}"
-  args:
-    chdir: "{{ bcompare.path }}"
-    warn: no
-  become: true
-
-- name: Copy key file.
-  copy:
-    src: "BC4Key.txt"
-    dest: "{{ bcompare.path }}/{{ bcompare.key_file }}"
-  become: true

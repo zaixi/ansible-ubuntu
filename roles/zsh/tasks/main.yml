@@ -4,6 +4,11 @@
   apt: pkg=zsh state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
   become: true
 
+- name: Install zshdb with Aptitude
+  apt: pkg=zshdb state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
+
+
 - name: Make ZSH default shell for user root
   user: name=root shell=/bin/zsh
   become: true

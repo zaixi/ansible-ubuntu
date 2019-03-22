@@ -56,7 +56,7 @@
      - { role: remmina}                   # 远程桌面
     # - { role: ripgrep}                   # rg 搜索
     # - { role: rofi}                      # 窗口切换器
-    # - { role: shutter}                   # 截图工具
+     - { role: shutter}                   # 截图工具
     # - { role: sift}                      # 类似grep
     # - { role: slop}                      # 显示选中区域坐标
     # - { role: skype}                     # skype聊天
@@ -98,6 +98,7 @@
      - { role: sogoupinyin}               # 搜狗输入法
      #- { role: go-for-it}                 # go-for-it
      - { role: bcompare}                  # 对比工具
+     - { role: hack-bcompare}             # 破解对比工具
      - { role: lantern}                   # 蓝灯
      - { role: zerotier}                  # zerotier
      - { role: master-pdf-editor}         # pdf编辑器

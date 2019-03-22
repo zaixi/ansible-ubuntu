@@ -4,7 +4,7 @@
   hosts: localhost
   roles:
 # Common roles
-    # - { role: debug}                     # 调试
+     #- { role: debug}                     # 调试
     # - { role: hosts}                     # hosts 文件修改
     # - { role: locales}                   # 配置语言和时区
     # - { role: common}                    # 安装通用软件,需要看看哪些需要安装
@@ -99,6 +99,7 @@
     # - { role: sogoupinyin}               # 搜狗输入法
     # - { role: go-for-it}                 # go-for-it
     # - { role: bcompare}                  # 对比工具
+    # - { role: hack-bcompare}             # 破解对比工具
     # - { role: lantern}                   # 蓝灯
     # - { role: zerotier}                  # zerotier
     # - { role: master-pdf-editor}         # pdf编辑器
