@@ -1,5 +1,9 @@
 ---
 
+- name: Install zh-cn locales #安装语言
+  apt: name=language-pack-zh-hans state=latest update_cache=yes cache_valid_time={{ aptcachetime }}
+  become: true
+
 - name: Configure locales #添加语言
   lineinfile: dest=/var/lib/locales/supported.d/local regexp="{{ item }}" line="{{ item }}" create="yes"
   become: true
