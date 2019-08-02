@@ -1,0 +1,141 @@
+---
+
+- name: Ubuntu desktop environment playbook
+  hosts: localhost
+  roles:
+# Common roles
+     #- { role: debug}                     # 调试
+    # - { role: hosts}                     # hosts 文件修改
+     - { role: locales}                   # 配置语言和时区
+     - { role: common}                    # 安装通用软件,需要看看哪些需要安装
+     - { role: zsh}                       # zshrc还需要更改
+     - { role: java-openjdk}              # java jdk
+    # - { role: phantomjs}                 # 无界面浏览器
+# Server roles
+     - { role: docker}                    # docker
+     - { role: fail2ban}                  # 防止暴力破解
+     - { role: python}                    # python
+     - { role: ssh}                       # ssh
+# Desktop roles
+     - { role: desktop}                   # 安装软件,禁用guest账户
+     - { role: desktop-cleanup}           # 删除亚马逊图标等
+     - { role: desktop-autostart}         # 添加删除自启动
+     - { role: desktop-preferences-unity} # 界面设置，快捷键设置
+     - { role: adapta-theme}              # 界面主题
+    # - { role: altyo}                     # 下拉终端
+     - { role: arc-theme}                 # 界面主题
+     - { role: papirus-icon-theme}        # 界面主题
+     - { role: numix-icon-theme}          # 界面主题
+    # - { role: atom}                      # atom
+    # - { role: chromium}                  # chromium浏览器,chrome未安装
+    # - { role: claws-mail}                # 邮件客户端
+    # - { role: compton}                   # 窗口合成
+    # - { role: copyq}                     # 高级剪贴板
+     - { role: dbeaver}                   # 数据库工具
+    # - { role: filezilla}                 # ftp
+    # - { role: firefox}                   # 火狐浏览器
+     - { role: flatabulous}               # 界面主题
+    # - { role: gdrive}                    # 谷歌云盘
+    # - { role: geary}                     # 轻量级mail客户端
+     - { role: gimp}                      # linux版ps
+     - { role: grub-customizer}           # grub 图形界面
+    # - { role: hubic}                     # 欧洲云盘
+     - { role: sysmonito}                 # 导航栏监控
+     - { role: ksuperkey}                 # win键可以打开程序
+    # - { role: libreoffice}               # libreoffice
+    # - { role: maim}                      # 屏幕截图
+    # - { role: min}                       # 浏览器
+    # - { role: mysql-workbench}           # mysql图形界面
+     - { role: nautilus-plugins}          # 文件管理器增强
+    # - { role: nemo}                      # Ubuntu 12的文件管理器
+    # - { role: notepadqq}                 # notepadqq编辑器
+     - { role: notify-osd}                # 通知osd
+    # - { role: qutebrowser}               # 类似vim的浏览器
+    # - { role: remarkable}                # markdown编辑器
+     - { role: remmina}                   # 远程桌面
+     - { role: ripgrep}                   # rg 搜索
+    # - { role: rofi}                      # 窗口切换器
+    # - { role: shutter}                   # 截图工具
+    # - { role: sift}                      # 类似grep
+    # - { role: slop}                      # 显示选中区域坐标
+    # - { role: skype}                     # skype聊天
+    # - { role: smartgit}                  # git客户端
+    # - { role: spotify}                   # 音乐客户端
+    # - { role: sublime3}                  # sublime3
+    # - { role: sunflower}                 # 双面板文件管理器
+     - { role: teamviewer}                # 远程桌面
+     - { role: thunderbird}               # 邮件客户端
+     - { role: ultra-flat-icons}          # 系统图标
+    # - { role: urxvt-perls }              # urxvt终端扩展
+    # - { role: vagrant}                   # VirtualBox管理工具
+    # - { role: virtualbox}                # 虚拟机
+    # - { role: vokoscreen}                # 屏幕录制软件
+     - { role: wine}                      # Windows软件环境
+    # - { role: workrave}                  # 健康提醒
+    # - { role: xfce-dockbarx}             # xfce桌面
+# bspwm
+    # - { role: sxhkd}                     # x热键守护进程
+    # - { role: bspwm}                     # 窗口管理器
+    # - { role: bspwm-panel}               # 窗口管理器
+    # - { role: bspwm-environment}         # 窗口管理器
+# User roles
+    # - { role: gulp}                      # js自动构建
+    # - { role: browsersync }              # 浏览器同步测试工具
+    # - { role: bower }                    # web包管理
+    # - { role: webpack }                  # web打包器
+     - { role: clean}                     # 升级并清理系统
+     - { role: vim}                       # vim
+     - { role: chrome}                    # chrome
+     - { role: 32bitlib}                  # 32位兼容库
+     - { role: arm}                       # ARM工具链
+     - { role: jlink}                     # jlink
+     - { role: fonts}                     # powerline字体
+     - { role: tftp}                      # tftp 服务器
+     - { role: nfs}                       # nfs 服务器
+     - { role: samba}                     # samba 服务器
+    # - { role: wps}                       # wps
+    # - { role: wps_fonts}                 # wps 字体
+     - { role: jianguoyun}                # 坚果云
+     - { role: sogoupinyin}               # 搜狗输入法
+    # - { role: go-for-it}                 # go-for-it
+     - { role: bcompare}                  # 对比工具
+     - { role: hack-bcompare}             # 破解对比工具
+    # - { role: lantern}                   # 蓝灯
+    # - { role: zerotier}                  # zerotier
+    # - { role: master-pdf-editor}         # pdf编辑器
+    # - { role: thefuck}                   # thefuck
+     - { role: udev}                      # udev
+    # - { role: xx-net}                    # XX-NET
+     - { role: solarized}                 # ls颜色
+     - { role: vscode}                    # vscode
+    # - { role: opengrok}                  # OpenGrok
+    # - { role: pdf2htmlEX}                # pdf2htmlEX
+     - { role: progress}                  # cp,mv进度
+     - { role: GouYong}                   # 屏幕取词翻译
+     - { role: qemu}                      # qemu
+    # - { role: albert}                    # dash
+     - { role: fzf}                       # fzf
+    #
+    #
+    # - { role: apache2}
+    # - { role: apache2-php}
+    # - { role: beanstalkd, become: true }
+    # - { role: blackfire, become: true }
+    # - { role: composer, become: true }
+    # - { role: elasticsearch, become: true }
+    # - { role: exim, become: true }
+    # - { role: gvm, become: true }
+    # - { role: hhvm, become: true }
+    # - { role: mailcatcher, become: true }
+    # - { role: mailhog, become: true }
+    # - { role: memcached, become: true }
+    # - { role: mysql57, become: true }
+    # - { role: mysql56, become: true }
+    # - { role: nginx, become: true }
+    # - { role: nginx-php-fpm, become: true }
+    # - { role: nodejs, become: true }
+    # - { role: php, become: true }
+    # - { role: php-pecl, become: true }
+    # - { role: php-phar-tools, become: true }
+    # - { role: redis, become: true }
+    # - { role: rbenv, become: true }
